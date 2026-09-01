@@ -425,7 +425,11 @@ export default function App() {
   const hintCountdown = Math.max(0, (view.settings.turnSeconds - 10) - (view.currentTurn?.secondsLeft ?? 0));
   const answerLocked = Boolean(view.currentTurn?.answerLocked);
 
-  const selectedLevel = grades.find((grade) => grade.value === view.settings.grade)?.label ?? 'Custom lesson';
+  const selectedLevel = view.settings.mode === 'grade'
+    ? grades.find((grade) => grade.value === view.settings.grade)?.label ?? 'Learning level'
+    : view.settings.mode === 'review'
+      ? 'Today Review'
+      : 'Teacher Custom';
 
   return (
     <main className="game-shell min-h-screen p-3 text-sumi">

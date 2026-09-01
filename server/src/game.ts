@@ -242,6 +242,12 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
     io.to(room.roomCode).emit('canvas:clear');
   });
 
+  socket.on('canvas:replace', (imageData: string) => {
+    const room = rooms.get(playerRooms.get(socket.id) ?? '');
+    if (!room || room.turn?.drawerId !== socket.id || room.phase !== 'playing' || typeof imageData !== 'string') return;
+    socket.to(room.roomCode).emit('canvas:replace', imageData);
+  });
+
   socket.on('answer:submit', ({ choice }: { choice: string }) => {
     const room = rooms.get(playerRooms.get(socket.id) ?? '');
     if (!room || !room.turn || room.phase !== 'playing' || room.turn.drawerId === socket.id) return;

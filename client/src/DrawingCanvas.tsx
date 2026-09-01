@@ -25,8 +25,11 @@ function drawLine(canvas: HTMLCanvasElement, payload: StrokePayload) {
 export default function DrawingCanvas({ canDraw, phase }: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const lastPointRef = useRef<StrokePoint | null>(null);
+  const historyRef = useRef<string[]>([]);
   const [width, setWidth] = useState(10);
   const [mode, setMode] = useState<'pen' | 'eraser'>('pen');
+  const [color, setColor] = useState('#171717');
+  const [hasInk, setHasInk] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -50,7 +53,10 @@ export default function DrawingCanvas({ canDraw, phase }: Props) {
   }, []);
 
   useEffect(() => {
-    const onStroke = (payload: StrokePayload) => canvasRef.current && drawLine(canvasRef.current, payload);
+    const onStroke = (payload: StrokePayload) => {
+      if (canvasRef.current) drawLine(canvasRef.current, payload);
+      setHasInk(true);
+    };
     const onClear = () => {
       const canvas = canvasRef.current;
       const ctx = canvas?.getContext('2d');
@@ -58,13 +64,35 @@ export default function DrawingCanvas({ canDraw, phase }: Props) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+        historyRef.current = [];
+        setHasInk(false);
       }
+    };
+    const onReplace = (imageData: string) => {
+      const canvas = canvasRef.current;
+      const ctx = canvas?.getContext('2d');
+      if (!canvas || !ctx) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      if (!imageData) {
+        setHasInk(false);
+        return;
+      }
+      const image = new Image();
+      image.onload = () => {
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        setHasInk(true);
+      };
+      image.src = imageData;
     };
     socket.on('draw:stroke', onStroke);
     socket.on('canvas:clear', onClear);
+    socket.on('canvas:replace', onReplace);
     return () => {
       socket.off('draw:stroke', onStroke);
       socket.off('canvas:clear', onClear);
+      socket.off('canvas:replace', onReplace);
     };
   }, []);
 
@@ -76,39 +104,63 @@ export default function DrawingCanvas({ canDraw, phase }: Props) {
   const start = (event: React.PointerEvent<HTMLCanvasElement>) => {
     if (!canDraw || phase !== 'playing') return;
     event.currentTarget.setPointerCapture(event.pointerId);
+    historyRef.current.push(event.currentTarget.toDataURL());
+    if (historyRef.current.length > 20) historyRef.current.shift();
     lastPointRef.current = pointFromEvent(event);
   };
 
   const move = (event: React.PointerEvent<HTMLCanvasElement>) => {
     if (!canDraw || phase !== 'playing' || !lastPointRef.current || !canvasRef.current) return;
     const next = pointFromEvent(event);
-    const payload: StrokePayload = { from: lastPointRef.current, to: next, color: '#171717', width, mode };
+    const payload: StrokePayload = { from: lastPointRef.current, to: next, color, width, mode };
     drawLine(canvasRef.current, payload);
     socket.emit('draw:stroke', payload);
+    setHasInk(true);
     lastPointRef.current = next;
   };
 
   const end = () => { lastPointRef.current = null; };
   const clear = () => socket.emit('canvas:clear');
+  const undo = () => {
+    const canvas = canvasRef.current;
+    const previous = historyRef.current.pop();
+    if (!canvas || !previous) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const image = new Image();
+    image.onload = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+      const replacement = canvas.toDataURL();
+      socket.emit('canvas:replace', replacement);
+      setHasInk(historyRef.current.length > 0);
+    };
+    image.src = previous;
+  };
 
   return (
     <div className={`drawing-board ${canDraw ? 'drawing-board-editor' : 'drawing-board-viewer'}`}>
+      <div className="canvas-wrap">
+        <canvas
+          ref={canvasRef}
+          className={`drawing-canvas w-full bg-white ${canDraw ? 'touch-none' : 'touch-pan-y'}`}
+          onPointerDown={start}
+          onPointerMove={move}
+          onPointerUp={end}
+          onPointerCancel={end}
+        />
+        {!hasInk && <div className="canvas-empty"><span aria-hidden="true">🐾</span>{canDraw ? 'Draw the kanji here' : 'Opponent is drawing...'}</div>}
+      </div>
       {canDraw && <div className="drawing-toolbar">
-        <button className={'tool-button ' + (mode === 'pen' ? 'tool-active' : '')} onClick={() => setMode('pen')} disabled={!canDraw}><span aria-hidden="true">✏️</span> Pen</button>
-        <button className={'tool-button ' + (mode === 'eraser' ? 'tool-active' : '')} onClick={() => setMode('eraser')} disabled={!canDraw}><span aria-hidden="true">◩</span> Eraser</button>
-        <label className="flex items-center gap-2 text-sm font-bold text-slate-600">Size
-          <input type="range" min="4" max="28" value={width} onChange={(e) => setWidth(Number(e.target.value))} disabled={!canDraw} />
-        </label>
-        <button className="tool-button bg-rose-100 text-rose-700" onClick={clear} disabled={!canDraw}>Clear</button>
+        <button className={'tool-button ' + (mode === 'pen' ? 'tool-active' : '')} onClick={() => setMode('pen')}><span aria-hidden="true">✏️</span> Pen</button>
+        <button className={'tool-button ' + (mode === 'eraser' ? 'tool-active' : '')} onClick={() => setMode('eraser')}><span aria-hidden="true">◩</span> Eraser</button>
+        <button className="tool-button" onClick={undo} disabled={historyRef.current.length === 0}><span aria-hidden="true">↶</span> Undo</button>
+        <button className="tool-button" onClick={clear}><span aria-hidden="true">▣</span> Clear</button>
+        <label className="brush-control">Brush Size<input type="range" min="4" max="28" value={width} onChange={(e) => setWidth(Number(e.target.value))} /></label>
+        <div className="color-control" aria-label="Pen color">{['#171717', '#38bdf8', '#fb6f92'].map((swatch) => <button key={swatch} type="button" aria-label={`Use ${swatch} pen`} className={color === swatch ? 'color-swatch color-selected' : 'color-swatch'} style={{ backgroundColor: swatch }} onClick={() => { setColor(swatch); setMode('pen'); }} />)}</div>
       </div>}
-      <canvas
-        ref={canvasRef}
-        className={`drawing-canvas w-full bg-white ${canDraw ? 'touch-none' : 'touch-pan-y'}`}
-        onPointerDown={start}
-        onPointerMove={move}
-        onPointerUp={end}
-        onPointerCancel={end}
-      />
     </div>
   );
 }

@@ -437,14 +437,17 @@ export default function App() {
           <div className={answerFeedback.correct ? 'sparkle-burst' : 'wrong-burst'}>{answerFeedback.correct ? '✨' : '×'}</div>
         </div>
       )}
-      <section className="mx-auto max-w-[1440px]">
+      <section className="game-frame mx-auto max-w-[1440px]">
         <header className="game-header">
-          <div><p className="text-sm font-black text-sakura">Kanji Draw Battle</p><p className="text-2xl font-black">Round {view.currentTurn?.round} <span className="text-base text-slate-400">of {view.settings.roundLimit}</span></p></div>
+          <p className="game-brand"><span>Kanji</span> Draw Battle <b aria-hidden="true">🐾</b></p>
+          <div className="room-chip">Room {view.roomCode}</div>
+          <p className="round-copy">Round {view.currentTurn?.round} / {view.settings.roundLimit}</p>
+          <div className="mobile-player-strip" aria-label="Players">{view.players.map((p, index) => <img key={p.id} src={mascotImages[index % mascotImages.length]} alt={p.name} className={p.id === view.currentTurn?.drawerId ? 'mini-drawing' : ''} />)}</div>
           <div className="game-header-level"><span aria-hidden="true">🎓</span><span>{selectedLevel}</span></div>
           <p className="game-header-status">{view.currentTurn?.statusMessage}</p>
         </header>
-        <div className="mt-3 grid gap-4 lg:grid-cols-[minmax(0,1fr)_310px]">
-        <div className="min-w-0">
+        <div className="game-stage">
+        <div className="game-main min-w-0">
           {view.isDrawer ? <section className="prompt-card" aria-label="Your drawing prompt">
             <div className="prompt-card-main">
               <p className="prompt-label"><span aria-hidden="true">✏️</span> Write the kanji for</p>
@@ -456,7 +459,7 @@ export default function App() {
             </div>
             <div className="prompt-timer" aria-label={`${view.currentTurn?.secondsLeft} seconds left`}><span aria-hidden="true">⏱</span><strong>{view.currentTurn?.secondsLeft}</strong><small>sec</small></div>
           </section> : <section className="guesser-banner">
-            <div><p className="text-xl font-black">Watch the drawing!</p><p className="font-bold text-slate-600">Scroll down and choose the correct reading.</p></div>
+            <div className="guesser-drawer"><img src={mascotImages[Math.max(0, view.players.findIndex((p) => p.id === view.currentTurn?.drawerId)) % mascotImages.length]} alt="" /><div><p className="text-lg font-black">{view.currentTurn?.drawerName} is drawing...</p><p className="text-sm font-bold text-blue-100">Watch closely, then choose the reading.</p></div></div>
             <div className="guesser-timer"><strong>{view.currentTurn?.secondsLeft}</strong><span>sec</span></div>
           </section>}
           <DrawingCanvas canDraw={view.isDrawer} phase={view.phase} />
@@ -464,9 +467,9 @@ export default function App() {
           {!view.isDrawer && answerLocked && view.phase === 'playing' && <div className="mt-4 rounded-3xl bg-red-50 p-5 text-center text-xl font-black text-red-600 shadow-soft">You missed this one. Wait until another player answers correctly.</div>}
           {view.currentTurn?.answer && !view.isDrawer && view.phase === 'turn-reveal' && <div className="mt-4 rounded-3xl bg-white p-5 text-center text-3xl font-black shadow-soft">Answer: {view.currentTurn.answer}<span className="block text-xl text-slate-600">Reading: {view.currentTurn.correctChoice}</span></div>}
         </div>
-        <aside className="score-panel h-fit">
-          <div className="flex items-center justify-between"><h2 className="text-2xl font-black">Players</h2><span className="text-sm font-black text-sora">{view.players.length} playing</span></div>
-          <div className="mt-4 grid gap-3">{view.players.map((p, index) => <div key={p.id} className={`player-row ${p.id === view.currentTurn?.drawerId ? 'player-drawing' : ''}`}><img src={mascotImages[index % mascotImages.length]} alt="" /><div className="min-w-0 flex-1"><div className="flex items-center justify-between gap-2 font-black"><span className="truncate">{p.name}{p.id === view.you?.id ? ' (You)' : ''}</span><span className="shrink-0 text-sakura">{p.score} pts</span></div><p className="mt-1 text-xs font-bold text-slate-500">{p.id === view.currentTurn?.drawerId ? 'Drawing now' : `${p.correctCount} correct · ${p.wrongCount} missed`}</p></div></div>)}</div>
+        <aside className="score-panel h-fit" aria-label="Players and scores">
+          <div className="score-title"><h2>Players</h2><span>{view.players.length} playing</span></div>
+          <div className="player-list">{view.players.map((p, index) => <div key={p.id} className={`player-row ${p.id === view.currentTurn?.drawerId ? 'player-drawing' : ''}`}><span className="drawing-badge">Drawing</span><img src={mascotImages[index % mascotImages.length]} alt="" /><div className="player-info"><strong>{p.name}{p.id === view.you?.id ? ' (You)' : ''}</strong><b>{p.score} pts</b><small>{p.id === view.currentTurn?.drawerId ? 'Drawing now' : `${p.correctCount} correct · ${p.wrongCount} missed`}</small></div></div>)}</div>
         </aside>
         </div>
       </section>

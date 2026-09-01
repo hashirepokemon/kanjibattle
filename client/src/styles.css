@@ -26,49 +26,98 @@ main > section { @apply relative z-20; }
 .level-select { @apply border-0 bg-transparent px-0 shadow-none focus:border-transparent; }
 
 .game-shell { background: linear-gradient(180deg, #dff4ff 0%, #f4fbff 62%, #ffffff 100%); }
-.game-header { @apply relative z-20 flex flex-wrap items-center gap-3 rounded-3xl bg-white/90 px-5 py-3 shadow-soft; }
+.game-frame { @apply overflow-hidden border-2 border-sora/70 bg-sky-50/90 shadow-soft; border-radius: 2rem; }
+.game-header { @apply relative z-20 flex min-h-16 items-center gap-4 border-b-2 border-sakura/20 bg-white/95 px-6 py-3; }
+.game-brand { @apply shrink-0 text-2xl font-black text-sakura; }
+.game-brand span { @apply text-sky-500; }
+.game-brand b { @apply text-sakura; }
+.room-chip { @apply rounded-full border-2 border-sora/40 bg-sky-50 px-4 py-2 text-sm font-black text-sky-600; }
+.round-copy { @apply text-base font-black text-sumi; }
 .game-header-level { @apply ml-auto flex items-center gap-2 rounded-2xl border-2 border-sakura/30 bg-rose-50 px-4 py-2 text-sm font-black text-sakura; }
-.game-header-status { @apply w-full truncate text-sm font-bold text-slate-500 md:w-auto md:max-w-[32%]; }
-.prompt-card { @apply mb-3 grid overflow-hidden rounded-[1.35rem] border-2 border-sakura bg-white shadow-soft md:grid-cols-[minmax(0,1fr)_112px]; }
-.prompt-card-main { @apply grid min-w-0 items-center gap-x-4 px-4 py-3 text-center md:grid-cols-[auto_minmax(0,1fr)_auto] md:px-5; }
+.game-header-status { @apply max-w-[25%] truncate text-sm font-bold text-slate-500; }
+.mobile-player-strip { @apply hidden; }
+.game-stage { @apply grid min-h-0 gap-3 p-3 lg:grid-cols-[132px_minmax(0,1fr)]; }
+.game-main { @apply lg:col-start-2 lg:row-start-1; }
+.prompt-card { @apply mb-3 grid overflow-hidden rounded-[1.35rem] border border-sakura/60 bg-white shadow-soft md:grid-cols-[minmax(0,1fr)_112px]; }
+.prompt-card-main { @apply grid min-w-0 items-center gap-x-5 px-4 py-2 text-center md:grid-cols-[auto_minmax(0,1fr)_auto] md:px-6; }
 .prompt-label { @apply flex items-center justify-center gap-2 text-base font-black text-sakura; }
-.prompt-value { @apply overflow-hidden text-ellipsis font-black leading-tight text-sumi; font-size: clamp(2rem, 4vw, 3.7rem); overflow-wrap: anywhere; }
+.prompt-value { @apply overflow-hidden text-ellipsis font-black leading-tight text-sumi; font-size: clamp(2rem, 3.7vw, 3.35rem); overflow-wrap: anywhere; }
 .prompt-instruction { @apply text-xs font-black text-slate-500 md:text-sm; }
 .prompt-hint { @apply mt-2 text-base font-black text-slate-600; }
 .prompt-hint span { @apply rounded-lg bg-yuzu/50 px-3 py-1 text-2xl text-sumi; }
 .prompt-hint-soon { @apply col-span-full mt-1 text-xs font-bold text-slate-400; }
-.prompt-timer { @apply flex items-center justify-center gap-2 border-t-2 border-rose-100 bg-rose-50 px-4 py-3 text-sakura md:flex-col md:border-l-2 md:border-t-0; }
+.prompt-timer { @apply flex items-center justify-center gap-2 border-t border-rose-100 bg-rose-50 px-4 py-2 text-sakura md:flex-col md:border-l md:border-t-0; }
 .prompt-timer > span { @apply text-xl; }
 .prompt-timer strong { @apply text-4xl font-black leading-none; }
 .prompt-timer small { @apply text-sm font-black; }
-.guesser-banner { @apply mb-3 flex items-center justify-between gap-4 rounded-[1.75rem] border-4 border-sora/60 bg-white px-5 py-4 shadow-soft; }
-.guesser-timer { @apply flex items-baseline gap-1 rounded-2xl bg-sora/15 px-4 py-2 text-sakura; }
+.guesser-banner { @apply mb-3 flex items-center justify-between gap-4 rounded-xl bg-blue-500 px-4 py-2 text-white shadow-soft; }
+.guesser-drawer { @apply flex min-w-0 items-center gap-3; }
+.guesser-drawer img { @apply h-9 w-9 rounded-full bg-white object-cover ring-2 ring-white; }
+.guesser-timer { @apply flex items-baseline gap-1 rounded-xl bg-white px-3 py-1 text-sakura; }
 .guesser-timer strong { @apply text-4xl font-black; }
 .guesser-timer span { @apply text-sm font-black; }
-.drawing-board { @apply rounded-[2rem] bg-white p-3 shadow-soft ring-4 ring-white/70; }
-.drawing-toolbar { @apply mb-3 flex flex-wrap items-center gap-2; }
-.drawing-canvas { height: clamp(350px, 58vh, 620px); @apply rounded-[1.5rem] border-4 border-dashed border-sora/60; background-image: linear-gradient(to right, transparent calc(50% - 1px), rgb(148 163 184 / 0.18) 50%, transparent calc(50% + 1px)), linear-gradient(to bottom, transparent calc(50% - 1px), rgb(148 163 184 / 0.18) 50%, transparent calc(50% + 1px)); }
+.drawing-board { @apply overflow-hidden rounded-[1.5rem] bg-white p-2 shadow-soft ring-2 ring-white/70; }
+.canvas-wrap { @apply relative; }
+.drawing-toolbar { @apply mt-2 flex min-h-16 items-center gap-2 rounded-b-2xl border-t border-slate-100 bg-white px-3 py-2; }
+.drawing-canvas { height: clamp(410px, 62vh, 650px); @apply rounded-[1.1rem] border border-slate-200; background-image: linear-gradient(to right, transparent calc(50% - 1px), rgb(148 163 184 / 0.2) 50%, transparent calc(50% + 1px)), linear-gradient(to bottom, transparent calc(50% - 1px), rgb(148 163 184 / 0.2) 50%, transparent calc(50% + 1px)); }
+.canvas-empty { @apply pointer-events-none absolute inset-0 flex items-center justify-center gap-2 text-lg font-bold text-slate-400; }
+.canvas-empty span { @apply text-2xl opacity-60; }
 .drawing-board-viewer .drawing-canvas { touch-action: pan-y; }
+.brush-control { @apply ml-auto flex items-center gap-3 border-l border-slate-200 pl-4 text-sm font-black text-sumi; }
+.brush-control input { @apply w-28 accent-sakura; }
+.color-control { @apply flex items-center gap-2 border-l border-slate-200 pl-4; }
+.color-swatch { @apply h-6 w-6 rounded-full border-2 border-white shadow ring-1 ring-slate-300; }
+.color-selected { @apply ring-2 ring-sakura ring-offset-2; }
 .answer-zone { @apply mt-4 rounded-[1.75rem] bg-white/95 p-4 shadow-soft; scroll-margin-top: 1rem; }
 .answer-zone-heading { @apply mb-4 flex items-center justify-center gap-3 text-center text-sakura; }
 .answer-zone-heading > span { @apply text-3xl font-black; animation: answer-nudge 1.4s ease-in-out infinite; }
 .answer-zone-heading p { @apply text-2xl font-black text-sumi; }
 .answer-zone-heading div > span { @apply text-xs font-bold text-slate-500; }
 .answer-grid { @apply grid grid-cols-2 gap-3 md:grid-cols-4; }
-.score-panel { @apply rounded-[1.75rem] bg-white/95 p-5 shadow-soft; }
-.player-row { @apply flex items-center gap-3 rounded-2xl border-2 border-slate-100 bg-slate-50 p-3 transition; }
-.player-row img { @apply h-12 w-12 shrink-0 rounded-full bg-white object-cover ring-2 ring-sora/40; }
-.player-drawing { @apply border-sakura bg-rose-50; }
+.score-panel { @apply h-full bg-transparent p-0 lg:col-start-1 lg:row-start-1; }
+.score-title { @apply hidden; }
+.player-list { @apply grid gap-3; }
+.player-row { @apply relative grid justify-items-center gap-1 rounded-xl border border-slate-200 bg-white/95 px-2 py-3 text-center shadow transition; }
+.player-row img { @apply h-16 w-16 shrink-0 rounded-full bg-white object-cover ring-2 ring-sora/40; }
+.player-info { @apply grid min-w-0 justify-items-center; }
+.player-info strong { @apply max-w-[108px] truncate text-base font-black; }
+.player-info b { @apply text-lg font-black text-sky-500; }
+.player-info small { @apply text-[10px] font-bold text-slate-400; }
+.player-drawing { @apply border-2 border-sakura bg-rose-50; }
+.drawing-badge { @apply absolute -top-2 hidden rounded-full bg-sakura px-2 py-0.5 text-[10px] font-black uppercase text-white; }
+.player-drawing .drawing-badge { @apply block; }
 
 @media (max-width: 767px) {
-  .game-header-status { @apply order-last w-full; }
+  .game-shell { @apply p-0; }
+  .game-frame { @apply rounded-none border-0; }
+  .game-header { @apply flex-wrap justify-center gap-2 px-3 py-2; }
+  .game-brand { @apply order-first w-full text-center text-xl; }
+  .room-chip, .game-header-level { @apply hidden; }
+  .round-copy { @apply rounded-full bg-slate-100 px-3 py-1 text-xs; }
+  .mobile-player-strip { @apply flex items-center; }
+  .mobile-player-strip img { @apply -ml-1 h-8 w-8 rounded-full bg-white object-cover ring-2 ring-white; }
+  .mobile-player-strip .mini-drawing { @apply ring-sakura; }
+  .game-header-status { @apply hidden; }
+  .game-stage { @apply block p-2; }
+  .score-panel { @apply mt-3 rounded-2xl bg-white p-4 shadow-soft; }
+  .score-title { @apply flex items-center justify-between; }
+  .score-title h2 { @apply text-xl font-black; }
+  .score-title span { @apply text-xs font-black text-sora; }
+  .player-list { @apply mt-3; }
+  .player-row { @apply flex justify-items-stretch gap-3 p-3 text-left; }
+  .player-row img { @apply h-12 w-12; }
+  .player-info { @apply flex flex-1 flex-wrap items-center justify-between; }
+  .player-info small { @apply w-full text-left; }
   .prompt-card-main { @apply px-3 py-2; }
   .prompt-value { font-size: clamp(2rem, 10vw, 3rem); }
   .prompt-hint, .prompt-hint-soon { @apply hidden; }
   .prompt-timer { @apply py-2; }
   .prompt-timer strong { @apply text-3xl; }
-  .drawing-canvas { height: 52vh; min-height: 320px; }
-  .drawing-board-viewer .drawing-canvas { height: 48vh; min-height: 300px; }
+  .drawing-canvas { height: 53vh; min-height: 340px; }
+  .drawing-board-viewer .drawing-canvas { height: 48vh; min-height: 330px; }
+  .drawing-toolbar { @apply flex-wrap; }
+  .brush-control { @apply ml-0 border-l-0 pl-0; }
+  .color-control { @apply border-l-0 pl-0; }
   .choice-button { @apply min-h-20 p-3; }
 }
 

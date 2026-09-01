@@ -1,6 +1,6 @@
 import type { Server, Socket } from 'socket.io';
 import type { GameSettings, KanjiEntry, Player, RoomView, StrokePayload } from '../../shared/types.js';
-import { allKnownKanji, getEntriesForSettings } from './kanji.js';
+import { getEntriesForSettings } from './kanji.js';
 
 interface TurnState {
   round: number;
@@ -8,6 +8,7 @@ interface TurnState {
   entry: KanjiEntry;
   promptType: 'reading' | 'meaning';
   prompt: string;
+  correctChoice: string;
   answer: string;
   answered: Set<string>;
   firstCorrectId?: string;
@@ -36,7 +37,7 @@ const defaultSettings: GameSettings = {
   mode: 'grade',
   grade: 'grade1',
   customKanjiInput: '森, 林, 川, 山, 火, 水',
-  promptMode: 'random',
+  promptMode: 'reading',
   roundLimit: 6,
   turnSeconds: 60,
   rescueEnabled: true,
@@ -58,17 +59,16 @@ function pick<T>(items: T[]): T {
   return items[Math.floor(Math.random() * items.length)];
 }
 
-const preferredMeanings = new Map<string, string>([
-  ['力', 'power'],
-]);
-
 function preferredReading(entry: KanjiEntry) {
-  const reading = entry.reading?.[0] ?? entry.kunyomi?.[0] ?? entry.onyomi?.[0] ?? entry.kanji;
-  return entry.readingHints?.[reading] ?? reading;
+  return entry.kunyomi?.[0] ?? entry.reading?.[0] ?? entry.onyomi?.[0] ?? entry.kanji;
 }
 
-function preferredMeaning(entry: KanjiEntry) {
-  return preferredMeanings.get(entry.kanji) ?? entry.meaning?.[0] ?? 'meaning unavailable';
+function readingChoiceText(entry: KanjiEntry, reading = preferredReading(entry)): string {
+  const displayReading = entry.readingHints?.[reading] ?? reading;
+  const withoutAffixMarkers = displayReading.replace(/^-|-$/g, '');
+  const dotIndex = withoutAffixMarkers.indexOf('.');
+  if (dotIndex < 0) return withoutAffixMarkers;
+  return `${withoutAffixMarkers.slice(0, dotIndex)}（${withoutAffixMarkers.slice(dotIndex + 1)}）`;
 }
 
 function choiceCount(player: Player, room: RoomState): number {
@@ -80,8 +80,10 @@ function choiceCount(player: Player, room: RoomState): number {
 
 function choicesFor(player: Player, entry: KanjiEntry, room: RoomState): string[] {
   const needed = choiceCount(player, room);
-  const pool = Array.from(new Set([...entry.distractors, ...room.entries.map((e) => e.kanji), ...allKnownKanji()])).filter((k) => k !== entry.kanji);
-  return shuffle([entry.kanji, ...shuffle(pool).slice(0, Math.max(0, needed - 1))]);
+  const knownEntries = room.entries;
+  const correctChoice = readingChoiceText(entry);
+  const pool = Array.from(new Set(knownEntries.filter((candidate) => candidate.kanji !== entry.kanji).map((candidate) => readingChoiceText(candidate)))).filter((reading) => reading !== correctChoice);
+  return shuffle([correctChoice, ...shuffle(pool).slice(0, Math.max(0, needed - 1))]);
 }
 
 function makeView(room: RoomState, socketId: string): RoomView {
@@ -127,13 +129,12 @@ function startTurn(io: Server, room: RoomState, drawerId?: string): void {
   if (drawerId) room.drawerIndex = Math.max(0, room.players.findIndex((p) => p.id === drawerId));
   const drawer = room.players[room.drawerIndex % room.players.length];
   const entry = pick(room.entries);
-  const allowed = entry.promptTypes.length ? entry.promptTypes : ['reading', 'meaning'];
-  const promptType = room.settings.promptMode === 'random' ? pick(allowed) : room.settings.promptMode;
-  const prompt = promptType === 'reading' ? `${preferredReading(entry)} (${preferredMeaning(entry)})` : preferredMeaning(entry);
+  const promptType = 'reading';
+  const prompt = readingChoiceText(entry);
   const nextRound = room.turn ? room.turn.round + 1 : 1;
 
   room.phase = 'playing';
-  room.turn = { round: nextRound, drawerId: drawer.id, entry, promptType, prompt, answer: entry.kanji, answered: new Set(), statusMessage: 'お題担当が漢字を書いています', secondsLeft: room.settings.turnSeconds, choicesByPlayer: {} };
+  room.turn = { round: nextRound, drawerId: drawer.id, entry, promptType, prompt, correctChoice: prompt, answer: entry.kanji, answered: new Set(), statusMessage: 'The drawer is writing the kanji.', secondsLeft: room.settings.turnSeconds, choicesByPlayer: {} };
   for (const player of room.players) if (player.id !== drawer.id) room.turn.choicesByPlayer[player.id] = choicesFor(player, entry, room);
 
   io.to(room.roomCode).emit('canvas:clear');
@@ -209,7 +210,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
   socket.on('settings:update', (settings: Partial<GameSettings>) => {
     const room = rooms.get(playerRooms.get(socket.id) ?? '');
     if (!room || room.hostId !== socket.id || room.phase !== 'lobby') return;
-    room.settings = { ...room.settings, ...settings };
+    room.settings = { ...room.settings, ...settings, promptMode: 'reading' };
     if (room.settings.mode === 'review') {
       room.settings.turnSeconds = 45;
       room.settings.roundLimit = Math.min(Math.max(room.settings.roundLimit, 1), 2);
@@ -247,7 +248,7 @@ export function registerGameHandlers(io: Server, socket: Socket): void {
     const player = room.players.find((p) => p.id === socket.id);
     if (!player || room.turn.firstCorrectId) return;
     room.turn.answered.add(socket.id);
-    if (choice === room.turn.answer) finishTurn(io, room, socket.id);
+    if (choice === room.turn.correctChoice) finishTurn(io, room, socket.id);
     else {
       player.wrongCount += 1;
       room.turn.statusMessage = player.name + 'さん、もう一度考えてみよう';

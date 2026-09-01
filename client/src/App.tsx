@@ -115,7 +115,7 @@ function RulesPage({ onBack }: { onBack: () => void }) {
         <div className="panel">
           <p className="text-lg font-black text-sakura">How to play</p>
           <h1 className="mt-2 text-4xl font-black md:text-6xl">Kanji Draw Battle Rules</h1>
-          <p className="mt-4 text-lg font-bold leading-8 text-slate-600">Kanji Draw Battle is a real-time classroom game. One player writes a kanji by hand, and the other players guess the matching reading or English meaning from multiple choices.</p>
+          <p className="mt-4 text-lg font-bold leading-8 text-slate-600">Kanji Draw Battle is a real-time classroom game. One player sees a Japanese reading and writes the matching kanji, while everyone else chooses the correct reading.</p>
         </div>
         <div className="mt-5 grid gap-4 md:grid-cols-2">
           <div className="panel">
@@ -128,11 +128,11 @@ function RulesPage({ onBack }: { onBack: () => void }) {
           </div>
           <div className="panel">
             <h2 className="text-2xl font-black">3. Drawer Turn</h2>
-            <p className="mt-3 font-bold leading-7 text-slate-600">The drawer sees a reading or English meaning and writes the matching kanji on the canvas. The exact kanji hint appears only after 10 seconds.</p>
+            <p className="mt-3 font-bold leading-7 text-slate-600">The drawer sees a Japanese reading and writes the matching kanji on the canvas. Okurigana appears in parentheses, and the exact kanji hint appears after 10 seconds.</p>
           </div>
           <div className="panel">
             <h2 className="text-2xl font-black">4. Guessing</h2>
-            <p className="mt-3 font-bold leading-7 text-slate-600">Guessers cannot see the drawer&apos;s prompt. They choose the correct reading or English meaning from the answer buttons. A wrong answer locks that player out for the rest of the turn.</p>
+            <p className="mt-3 font-bold leading-7 text-slate-600">Guessers cannot see the drawer&apos;s prompt. They watch the drawing and choose the correct reading. A wrong answer locks that player out for the rest of the turn.</p>
           </div>
           <div className="panel">
             <h2 className="text-2xl font-black">5. Scoring</h2>
@@ -315,7 +315,7 @@ export default function App() {
             <div className="flex flex-col justify-center">
               <p className="text-lg font-black text-sakura">Real-time kanji learning battle</p>
               <h1 className="mt-3 text-5xl font-black leading-tight md:text-7xl">Kanji Draw Battle</h1>
-              <p className="mt-5 text-lg font-bold leading-8 text-slate-600">One player sees a reading or English meaning, writes the matching kanji, and everyone else chooses the correct reading or meaning. <button className="read-more-link" onClick={openRules}>Read more...</button></p>
+              <p className="mt-5 text-lg font-bold leading-8 text-slate-600">One player sees a Japanese reading, writes the matching kanji, and everyone else chooses the correct reading. <button className="read-more-link" onClick={openRules}>Read more...</button></p>
             </div>
             <div className="rounded-[1.5rem] bg-sora/20 p-5">
               {!joinNameStep && !inviteRoomCode ? <>
@@ -402,7 +402,6 @@ export default function App() {
               {view.settings.mode === 'grade' && <><label className="label">Learning Level</label><div className="level-select-wrap"><span aria-hidden="true">🎓</span><select className="input level-select" value={view.settings.grade} onChange={(e) => updateSettings({ grade: e.target.value as GradeKey })}>{grades.map((g) => <option key={g.value} value={g.value}>{g.label}</option>)}</select></div><p className="-mt-2 text-sm font-bold text-slate-500">Grade levels follow the current MEXT grade allocation. JLPT and AP use their dedicated lists.</p></>}
               {view.settings.mode !== 'grade' && <><label className="label">Kanji for this game</label><textarea className="input min-h-28" value={view.settings.customKanjiInput} onChange={(e) => updateSettings({ customKanjiInput: e.target.value })} placeholder={'\u68ee, \u6797, \u5ddd, \u5c71, \u706b, \u6c34'} /></>}
               <div className="grid gap-4 md:grid-cols-2">
-                <div><label className="label">Prompt Type</label><select className="input" value={view.settings.promptMode} onChange={(e) => updateSettings({ promptMode: e.target.value as GameSettings['promptMode'] })}><option value="random">Random reading or meaning</option><option value="reading">Reading only</option><option value="meaning">Meaning only</option></select></div>
                 <div><label className="label">Next Drawer</label><select className="input" value={view.settings.nextDrawerRule} onChange={(e) => updateSettings({ nextDrawerRule: e.target.value as GameSettings['nextDrawerRule'] })}><option value="winner">Winner draws next</option><option value="order">Take turns in order</option></select></div>
                 <div><label className="label">Rounds</label><input className="input" type="number" min="1" max="20" value={view.settings.roundLimit} onChange={(e) => updateSettings({ roundLimit: Number(e.target.value) })} /></div>
                 <div><label className="label">Time Limit (seconds)</label><input className="input" type="number" min="15" max="180" value={view.settings.turnSeconds} onChange={(e) => updateSettings({ turnSeconds: Number(e.target.value) })} /></div>
@@ -421,7 +420,6 @@ export default function App() {
     );
   }
 
-  const answerKind = view.currentTurn?.promptType === 'reading' ? 'reading' : 'English meaning';
   const hintCountdown = Math.max(0, (view.settings.turnSeconds - 10) - (view.currentTurn?.secondsLeft ?? 0));
   const answerLocked = Boolean(view.currentTurn?.answerLocked);
 
@@ -449,22 +447,22 @@ export default function App() {
         <div className="min-w-0">
           {view.isDrawer ? <section className="prompt-card" aria-label="Your drawing prompt">
             <div className="prompt-card-main">
-              <p className="prompt-label"><span aria-hidden="true">✏️</span> Draw this kanji</p>
+              <p className="prompt-label"><span aria-hidden="true">✏️</span> Write the kanji for</p>
               <p className="prompt-value">{view.currentTurn?.prompt}</p>
-              <p className="prompt-instruction">Write one kanji · shown as a {answerKind}</p>
+              <p className="prompt-instruction">送り仮名は（ ）で表示</p>
               {view.currentTurn?.answer
                 ? <p className="prompt-hint">Hint: write <span>{view.currentTurn.answer}</span></p>
-                : <p className="prompt-hint-soon">Kanji hint in {hintCountdown > 0 ? `${hintCountdown}s` : 'a moment'} — start from the reading or meaning above.</p>}
+                : <p className="prompt-hint-soon">Hint in {hintCountdown > 0 ? `${hintCountdown}s` : 'a moment'}</p>}
             </div>
             <div className="prompt-timer" aria-label={`${view.currentTurn?.secondsLeft} seconds left`}><span aria-hidden="true">⏱</span><strong>{view.currentTurn?.secondsLeft}</strong><small>sec</small></div>
           </section> : <section className="guesser-banner">
-            <div><p className="text-xl font-black">Watch the drawing!</p><p className="font-bold text-slate-600">Choose the matching {answerKind} below the canvas.</p></div>
+            <div><p className="text-xl font-black">Watch the drawing!</p><p className="font-bold text-slate-600">Scroll down and choose the correct reading.</p></div>
             <div className="guesser-timer"><strong>{view.currentTurn?.secondsLeft}</strong><span>sec</span></div>
           </section>}
           <DrawingCanvas canDraw={view.isDrawer} phase={view.phase} />
-          {!view.isDrawer && view.currentTurn?.choices && <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4">{view.currentTurn.choices.map((choice, index) => <button key={choice} className="choice-button" disabled={answerLocked || view.phase !== 'playing'} onClick={() => socket.emit('answer:submit', { choice })}><span className="choice-prefix">{String.fromCharCode(65 + index)}.</span><span className="choice-text">{choice}</span></button>)}</div>}
+          {!view.isDrawer && view.currentTurn?.choices && <section className="answer-zone" aria-label="Multiple choice answers"><div className="answer-zone-heading"><span aria-hidden="true">↓</span><div><p>Choose the reading</p><span>絵の上から指を動かしてもスクロールできます</span></div></div><div className="answer-grid">{view.currentTurn.choices.map((choice, index) => <button key={choice} className="choice-button" disabled={answerLocked || view.phase !== 'playing'} onClick={() => socket.emit('answer:submit', { choice })}><span className="choice-prefix">{String.fromCharCode(65 + index)}.</span><span className="choice-text">{choice}</span></button>)}</div></section>}
           {!view.isDrawer && answerLocked && view.phase === 'playing' && <div className="mt-4 rounded-3xl bg-red-50 p-5 text-center text-xl font-black text-red-600 shadow-soft">You missed this one. Wait until another player answers correctly.</div>}
-          {view.currentTurn?.answer && !view.isDrawer && view.phase === 'turn-reveal' && <div className="mt-4 rounded-3xl bg-white p-5 text-center text-3xl font-black shadow-soft">Answer: {view.currentTurn.answer}<span className="block text-xl text-slate-600">{answerKind}: {view.currentTurn.correctChoice}</span></div>}
+          {view.currentTurn?.answer && !view.isDrawer && view.phase === 'turn-reveal' && <div className="mt-4 rounded-3xl bg-white p-5 text-center text-3xl font-black shadow-soft">Answer: {view.currentTurn.answer}<span className="block text-xl text-slate-600">Reading: {view.currentTurn.correctChoice}</span></div>}
         </div>
         <aside className="score-panel h-fit">
           <div className="flex items-center justify-between"><h2 className="text-2xl font-black">Players</h2><span className="text-sm font-black text-sora">{view.players.length} playing</span></div>

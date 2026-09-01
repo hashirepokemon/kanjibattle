@@ -92,18 +92,18 @@ export default function DrawingCanvas({ canDraw, phase }: Props) {
   const clear = () => socket.emit('canvas:clear');
 
   return (
-    <div className="drawing-board">
-      <div className="drawing-toolbar">
+    <div className={`drawing-board ${canDraw ? 'drawing-board-editor' : 'drawing-board-viewer'}`}>
+      {canDraw && <div className="drawing-toolbar">
         <button className={'tool-button ' + (mode === 'pen' ? 'tool-active' : '')} onClick={() => setMode('pen')} disabled={!canDraw}><span aria-hidden="true">✏️</span> Pen</button>
         <button className={'tool-button ' + (mode === 'eraser' ? 'tool-active' : '')} onClick={() => setMode('eraser')} disabled={!canDraw}><span aria-hidden="true">◩</span> Eraser</button>
         <label className="flex items-center gap-2 text-sm font-bold text-slate-600">Size
           <input type="range" min="4" max="28" value={width} onChange={(e) => setWidth(Number(e.target.value))} disabled={!canDraw} />
         </label>
         <button className="tool-button bg-rose-100 text-rose-700" onClick={clear} disabled={!canDraw}>Clear</button>
-      </div>
+      </div>}
       <canvas
         ref={canvasRef}
-        className="drawing-canvas w-full touch-none bg-white"
+        className={`drawing-canvas w-full bg-white ${canDraw ? 'touch-none' : 'touch-pan-y'}`}
         onPointerDown={start}
         onPointerMove={move}
         onPointerUp={end}

@@ -8,7 +8,7 @@ const defaultSettings = {
   mode: 'grade',
   grade: 'grade1',
   customKanjiInput: '\u68ee, \u6797, \u5ddd, \u5c71, \u706b, \u6c34',
-  promptMode: 'random',
+  promptMode: 'reading',
   roundLimit: 6,
   turnSeconds: 60,
   rescueEnabled: true,
@@ -40,17 +40,8 @@ function pick(items, label) {
   return items[randomIndex(items, label)];
 }
 
-const preferredMeanings = new Map([
-  ['力', 'power'],
-]);
-
 function preferredReading(entry) {
-  const reading = entry.reading?.[0] ?? entry.kunyomi?.[0] ?? entry.onyomi?.[0] ?? entry.kanji;
-  return entry.readingHints?.[reading] ?? reading;
-}
-
-function preferredMeaning(entry) {
-  return preferredMeanings.get(entry.kanji) ?? entry.meaning?.[0] ?? 'meaning unavailable';
+  return entry.kunyomi?.[0] ?? entry.reading?.[0] ?? entry.onyomi?.[0] ?? entry.kanji;
 }
 
 function choiceCount(player, room) {
@@ -61,18 +52,19 @@ function choiceCount(player, room) {
 }
 
 function readingChoiceText(entry, reading) {
-  const meaning = preferredMeaning(entry);
   const baseReading = reading ?? preferredReading(entry);
   const displayReading = entry.readingHints?.[baseReading] ?? baseReading;
-  return `${displayReading} (${meaning})`;
+  const withoutAffixMarkers = displayReading.replace(/^-|-$/g, '');
+  const dotIndex = withoutAffixMarkers.indexOf('.');
+  if (dotIndex < 0) return withoutAffixMarkers;
+  return `${withoutAffixMarkers.slice(0, dotIndex)}（${withoutAffixMarkers.slice(dotIndex + 1)}）`;
 }
 
-function choiceText(entry, promptType) {
-  if (promptType === 'reading') return readingChoiceText(entry, preferredReading(entry));
-  return preferredMeaning(entry);
+function choiceText(entry) {
+  return readingChoiceText(entry, preferredReading(entry));
 }
 
-function choicesFor(player, entry, room, promptType, correctChoice) {
+function choicesFor(player, entry, room, correctChoice) {
   const needed = choiceCount(player, room);
   const knownEntries = [...room.entries, ...allKnownEntries()];
   for (const kanji of entry.distractors ?? []) {
@@ -82,7 +74,7 @@ function choicesFor(player, entry, room, promptType, correctChoice) {
   const pool = Array.from(new Set(
     knownEntries
       .filter((candidate) => candidate.kanji !== entry.kanji)
-      .map((candidate) => choiceText(candidate, promptType))
+      .map((candidate) => choiceText(candidate))
       .filter((choice) => choice && choice !== correctChoice)
   ));
   return shuffle([correctChoice, ...shuffle(pool).slice(0, Math.max(0, needed - 1))]);
@@ -135,16 +127,14 @@ function startTurn(io, room, drawerId) {
   if (drawerId) room.drawerIndex = Math.max(0, room.players.findIndex((p) => p.id === drawerId));
   const drawer = room.players[room.drawerIndex % room.players.length];
   const entry = pick(room.entries, 'kanji');
-  const allowed = entry.promptTypes?.length ? entry.promptTypes : ['reading', 'meaning'];
-  const promptType = room.settings.promptMode === 'random' ? pick(allowed, 'promptType') : room.settings.promptMode;
-  const rawPrompt = promptType === 'reading' ? preferredReading(entry) : preferredMeaning(entry);
-  const prompt = promptType === 'reading' ? readingChoiceText(entry, rawPrompt) : rawPrompt;
+  const promptType = 'reading';
+  const prompt = readingChoiceText(entry, preferredReading(entry));
   const correctChoice = prompt;
   const nextRound = room.turn ? room.turn.round + 1 : 1;
 
   room.phase = 'playing';
   room.turn = { round: nextRound, drawerId: drawer.id, entry, promptType, prompt, correctChoice, answer: entry.kanji, answered: new Set(), statusMessage: 'The drawer is writing the kanji.', secondsLeft: room.settings.turnSeconds, choicesByPlayer: {} };
-  for (const player of room.players) if (player.id !== drawer.id) room.turn.choicesByPlayer[player.id] = choicesFor(player, entry, room, promptType, correctChoice);
+  for (const player of room.players) if (player.id !== drawer.id) room.turn.choicesByPlayer[player.id] = choicesFor(player, entry, room, correctChoice);
 
   io.to(room.roomCode).emit('canvas:clear');
   room.turn.timer = setInterval(() => {
@@ -236,7 +226,7 @@ export function registerGameHandlers(io, socket) {
   socket.on('settings:update', (settings) => {
     const room = rooms.get(playerRooms.get(socket.id) ?? '');
     if (!room || room.hostId !== socket.id || room.phase !== 'lobby') return;
-    room.settings = { ...room.settings, ...settings };
+    room.settings = { ...room.settings, ...settings, promptMode: 'reading' };
     if (room.settings.mode === 'review') {
       room.settings.turnSeconds = 45;
       room.settings.roundLimit = Math.min(Math.max(room.settings.roundLimit, 1), 2);

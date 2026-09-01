@@ -19,6 +19,11 @@ const weekdayHints = {
 };
 
 const preferredKun = { 日: 'ひ', 月: 'つき', 火: 'ひ', 水: 'みず', 木: 'き', 金: 'かね', 土: 'つち' };
+const currentMextMoves = {
+  toGrade4: '茨媛岡潟岐熊香佐埼崎滋鹿縄井沖栃奈梨阪阜賀群徳富城',
+  toGrade5: '囲紀喜救型航告殺士史象賞貯停堂得毒費粉脈歴',
+  toGrade6: '胃腸恩券承舌銭退敵俵預'
+};
 const manual = new Map(Object.values(existing).flat().map((entry) => [entry.kanji, entry]));
 
 async function getApiEntry(kanji, gradeNumber) {
@@ -61,6 +66,24 @@ function withDistractors(entries) {
   }));
 }
 
+function applyCurrentMextGradeDistribution(data) {
+  const allEntries = Object.values(data).flat();
+  const byKanji = new Map(allEntries.map((entry) => [entry.kanji, entry]));
+  const moves = [
+    ['grade4', currentMextMoves.toGrade4],
+    ['grade5', currentMextMoves.toGrade5],
+    ['grade6', currentMextMoves.toGrade6]
+  ];
+  const moved = new Set(moves.flatMap(([, kanji]) => [...kanji]));
+
+  for (const gradeKey of gradeKeys) data[gradeKey] = data[gradeKey].filter((entry) => !moved.has(entry.kanji));
+  for (const [gradeKey, kanji] of moves) {
+    const gradeNumber = Number(gradeKey.replace('grade', ''));
+    data[gradeKey].push(...[...kanji].map((character) => byKanji.get(character)).filter(Boolean).map((entry) => ({ ...entry, grade: gradeNumber })));
+    data[gradeKey] = withDistractors(data[gradeKey]);
+  }
+}
+
 async function getGradeKanji(gradeNumber) {
   const response = await fetch(`https://kanjiapi.dev/v1/kanji/grade-${gradeNumber}`);
   if (!response.ok) throw new Error(`Grade list failed for grade ${gradeNumber}: ${response.status}`);
@@ -83,6 +106,8 @@ for (const [index, gradeKey] of gradeKeys.entries()) {
   existing.juniorHigh = withDistractors(entries);
   console.log(`juniorHigh: ${entries.length}`);
 }
+
+applyCurrentMextGradeDistribution(existing);
 
 for (const key of ['jlptN5', 'jlptN4', 'jlptN3', 'jlptN2', 'jlptN1', 'advanced']) {
   const source = sourceLists[key]?.kanji ?? '';

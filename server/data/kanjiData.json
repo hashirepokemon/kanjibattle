@@ -549,17 +549,15 @@
     {
       "kanji": "力",
       "reading": [
-        "ちから",
-        "リイ"
+        "ちから"
       ],
       "meaning": [
-        "bear up",
-        "exert",
-        "power"
+        "power",
+        "strength",
+        "force"
       ],
       "grade": 1,
       "onyomi": [
-        "リイ",
         "リキ",
         "リョク"
       ],
@@ -13522,7 +13520,7 @@
         "倉",
         "候",
         "借",
-        "停"
+        "健"
       ]
     },
     {
@@ -13547,8 +13545,8 @@
       "distractors": [
         "候",
         "借",
-        "停",
-        "健"
+        "健",
+        "側"
       ]
     },
     {
@@ -13575,9 +13573,9 @@
       ],
       "distractors": [
         "借",
-        "停",
         "健",
-        "側"
+        "側",
+        "働"
       ]
     },
     {
@@ -13603,10 +13601,10 @@
         "meaning"
       ],
       "distractors": [
-        "停",
         "健",
         "側",
-        "働"
+        "働",
+        "億"
       ]
     },
     {
@@ -13625,35 +13623,6 @@
       ],
       "kunyomi": [
         "か.りる"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "健",
-        "側",
-        "働",
-        "億"
-      ]
-    },
-    {
-      "kanji": "停",
-      "reading": [
-        "と.まる",
-        "テイ"
-      ],
-      "meaning": [
-        "halt",
-        "stopping"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "テイ"
-      ],
-      "kunyomi": [
-        "と.まる",
-        "と.める"
       ],
       "promptTypes": [
         "reading",
@@ -14359,7 +14328,7 @@
         "博",
         "印",
         "参",
-        "史"
+        "司"
       ]
     },
     {
@@ -14387,8 +14356,8 @@
       "distractors": [
         "印",
         "参",
-        "史",
-        "司"
+        "司",
+        "各"
       ]
     },
     {
@@ -14413,9 +14382,9 @@
       ],
       "distractors": [
         "参",
-        "史",
         "司",
-        "各"
+        "各",
+        "周"
       ]
     },
     {
@@ -14443,10 +14412,10 @@
         "meaning"
       ],
       "distractors": [
-        "史",
         "司",
         "各",
-        "告"
+        "周",
+        "唱"
       ]
     },
     {
@@ -14476,35 +14445,10 @@
         "meaning"
       ],
       "distractors": [
-        "司",
         "各",
-        "告",
-        "周"
-      ]
-    },
-    {
-      "kanji": "史",
-      "reading": [
-        "シ"
-      ],
-      "meaning": [
-        "chronicle",
-        "history"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "シ"
-      ],
-      "kunyomi": [],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "各",
-        "告",
         "周",
-        "唱"
+        "唱",
+        "器"
       ]
     },
     {
@@ -14530,10 +14474,10 @@
         "meaning"
       ],
       "distractors": [
-        "告",
         "周",
         "唱",
-        "喜"
+        "器",
+        "固"
       ]
     },
     {
@@ -14559,39 +14503,10 @@
         "meaning"
       ],
       "distractors": [
-        "周",
         "唱",
-        "喜",
-        "器"
-      ]
-    },
-    {
-      "kanji": "告",
-      "reading": [
-        "つ.げる",
-        "コク"
-      ],
-      "meaning": [
-        "announce",
-        "inform",
-        "revelation"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "コク"
-      ],
-      "kunyomi": [
-        "つ.げる"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "唱",
-        "喜",
         "器",
-        "囲"
+        "固",
+        "塩"
       ]
     },
     {
@@ -14617,10 +14532,10 @@
         "meaning"
       ],
       "distractors": [
-        "喜",
         "器",
-        "囲",
-        "固"
+        "固",
+        "塩",
+        "変"
       ]
     },
     {
@@ -14646,39 +14561,10 @@
         "meaning"
       ],
       "distractors": [
-        "器",
-        "囲",
         "固",
-        "型"
-      ]
-    },
-    {
-      "kanji": "喜",
-      "reading": [
-        "よろこ.ばす",
-        "キ"
-      ],
-      "meaning": [
-        "rejoice",
-        "take pleasure in"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "キ"
-      ],
-      "kunyomi": [
-        "よろこ.ばす",
-        "よろこ.ぶ"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "囲",
-        "固",
-        "型",
-        "堂"
+        "塩",
+        "変",
+        "夫"
       ]
     },
     {
@@ -14704,41 +14590,10 @@
         "meaning"
       ],
       "distractors": [
-        "固",
-        "型",
-        "堂",
-        "塩"
-      ]
-    },
-    {
-      "kanji": "囲",
-      "reading": [
-        "かこ.い",
-        "イ"
-      ],
-      "meaning": [
-        "besiege",
-        "encircle",
-        "enclosure"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "イ"
-      ],
-      "kunyomi": [
-        "かこ.い",
-        "かこ.う",
-        "かこ.む"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "型",
-        "堂",
         "塩",
-        "士"
+        "変",
+        "夫",
+        "失"
       ]
     },
     {
@@ -14767,65 +14622,10 @@
         "meaning"
       ],
       "distractors": [
-        "堂",
-        "塩",
-        "士",
-        "変"
-      ]
-    },
-    {
-      "kanji": "型",
-      "reading": [
-        "-がた",
-        "ケイ"
-      ],
-      "meaning": [
-        "model",
-        "mould",
-        "type"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "ケイ"
-      ],
-      "kunyomi": [
-        "-がた",
-        "かた"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "塩",
-        "士",
-        "変",
-        "夫"
-      ]
-    },
-    {
-      "kanji": "堂",
-      "reading": [
-        "ドウ"
-      ],
-      "meaning": [
-        "hall",
-        "public chamber"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "ドウ"
-      ],
-      "kunyomi": [],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "士",
         "変",
         "夫",
-        "失"
+        "失",
+        "好"
       ]
     },
     {
@@ -14843,35 +14643,6 @@
       ],
       "kunyomi": [
         "しお"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "変",
-        "夫",
-        "失",
-        "好"
-      ]
-    },
-    {
-      "kanji": "士",
-      "reading": [
-        "さむらい",
-        "シ"
-      ],
-      "meaning": [
-        "gentleman",
-        "samurai",
-        "samurai radical (no. 33)"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "シ"
-      ],
-      "kunyomi": [
-        "さむらい"
       ],
       "promptTypes": [
         "reading",
@@ -15365,7 +15136,7 @@
         "建",
         "径",
         "徒",
-        "得"
+        "必"
       ]
     },
     {
@@ -15389,8 +15160,8 @@
       "distractors": [
         "径",
         "徒",
-        "得",
-        "必"
+        "必",
+        "念"
       ]
     },
     {
@@ -15419,9 +15190,9 @@
       ],
       "distractors": [
         "徒",
-        "得",
         "必",
-        "念"
+        "念",
+        "愛"
       ]
     },
     {
@@ -15450,10 +15221,10 @@
         "meaning"
       ],
       "distractors": [
-        "得",
         "必",
         "念",
-        "愛"
+        "愛",
+        "成"
       ]
     },
     {
@@ -15474,36 +15245,6 @@
       "kunyomi": [
         "あだ",
         "いたずら"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "必",
-        "念",
-        "愛",
-        "成"
-      ]
-    },
-    {
-      "kanji": "得",
-      "reading": [
-        "う.る",
-        "トク"
-      ],
-      "meaning": [
-        "able to",
-        "acquire",
-        "advantage"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "トク"
-      ],
-      "kunyomi": [
-        "う.る",
-        "え.る"
       ],
       "promptTypes": [
         "reading",
@@ -15633,7 +15374,7 @@
         "折",
         "挙",
         "改",
-        "救"
+        "敗"
       ]
     },
     {
@@ -15665,8 +15406,8 @@
       "distractors": [
         "挙",
         "改",
-        "救",
-        "敗"
+        "敗",
+        "散"
       ]
     },
     {
@@ -15698,9 +15439,9 @@
       ],
       "distractors": [
         "改",
-        "救",
         "敗",
-        "散"
+        "散",
+        "料"
       ]
     },
     {
@@ -15728,10 +15469,10 @@
         "meaning"
       ],
       "distractors": [
-        "救",
         "敗",
         "散",
-        "料"
+        "料",
+        "旗"
       ]
     },
     {
@@ -15752,35 +15493,6 @@
       "kunyomi": [
         "あらた.まる",
         "あらた.める"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "敗",
-        "散",
-        "料",
-        "旗"
-      ]
-    },
-    {
-      "kanji": "救",
-      "reading": [
-        "すく.う",
-        "キュウ"
-      ],
-      "meaning": [
-        "help",
-        "reclaim",
-        "rescue"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "キュウ"
-      ],
-      "kunyomi": [
-        "すく.う"
       ],
       "promptTypes": [
         "reading",
@@ -16352,7 +16064,7 @@
         "標",
         "機",
         "欠",
-        "歴"
+        "残"
       ]
     },
     {
@@ -16387,8 +16099,8 @@
       "distractors": [
         "機",
         "欠",
-        "歴",
-        "残"
+        "残",
+        "氏"
       ]
     },
     {
@@ -16416,9 +16128,9 @@
       ],
       "distractors": [
         "欠",
-        "歴",
         "残",
-        "殺"
+        "氏",
+        "民"
       ]
     },
     {
@@ -16444,10 +16156,10 @@
         "meaning"
       ],
       "distractors": [
-        "歴",
         "残",
-        "殺",
-        "毒"
+        "氏",
+        "民",
+        "求"
       ]
     },
     {
@@ -16475,37 +16187,10 @@
         "meaning"
       ],
       "distractors": [
-        "残",
-        "殺",
-        "毒",
-        "氏"
-      ]
-    },
-    {
-      "kanji": "歴",
-      "reading": [
-        "レキ"
-      ],
-      "meaning": [
-        "continuation",
-        "curriculum",
-        "passage of time"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "レキ",
-        "レッキ"
-      ],
-      "kunyomi": [],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "殺",
-        "毒",
         "氏",
-        "民"
+        "民",
+        "求",
+        "治"
       ]
     },
     {
@@ -16530,66 +16215,6 @@
         "のこ.り",
         "のこ.る"
       ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "毒",
-        "氏",
-        "民",
-        "求"
-      ]
-    },
-    {
-      "kanji": "殺",
-      "reading": [
-        "-ごろ.し",
-        "サイ"
-      ],
-      "meaning": [
-        "butcher",
-        "diminish",
-        "kill"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "サイ",
-        "サツ",
-        "セツ"
-      ],
-      "kunyomi": [
-        "-ごろ.し",
-        "あや.める",
-        "ころ.す",
-        "そ.ぐ"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "氏",
-        "民",
-        "求",
-        "治"
-      ]
-    },
-    {
-      "kanji": "毒",
-      "reading": [
-        "ドク"
-      ],
-      "meaning": [
-        "germ",
-        "harm",
-        "injury"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "ドク"
-      ],
-      "kunyomi": [],
       "promptTypes": [
         "reading",
         "meaning"
@@ -17384,7 +17009,7 @@
         "笑",
         "管",
         "節",
-        "粉"
+        "約"
       ]
     },
     {
@@ -17415,8 +17040,8 @@
       "distractors": [
         "管",
         "節",
-        "粉",
-        "紀"
+        "約",
+        "結"
       ]
     },
     {
@@ -17442,9 +17067,9 @@
       ],
       "distractors": [
         "節",
-        "粉",
-        "紀",
-        "約"
+        "約",
+        "結",
+        "給"
       ]
     },
     {
@@ -17470,10 +17095,10 @@
         "meaning"
       ],
       "distractors": [
-        "粉",
-        "紀",
         "約",
-        "結"
+        "結",
+        "給",
+        "続"
       ]
     },
     {
@@ -17497,63 +17122,6 @@
         "のっと",
         "ふし"
       ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "紀",
-        "約",
-        "結",
-        "給"
-      ]
-    },
-    {
-      "kanji": "粉",
-      "reading": [
-        "こ",
-        "フン"
-      ],
-      "meaning": [
-        "dust",
-        "flour",
-        "powder"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "フン"
-      ],
-      "kunyomi": [
-        "こ",
-        "こな",
-        "デシメートル"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "約",
-        "結",
-        "給",
-        "続"
-      ]
-    },
-    {
-      "kanji": "紀",
-      "reading": [
-        "キ"
-      ],
-      "meaning": [
-        "account",
-        "annals",
-        "chronicle"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "キ"
-      ],
-      "kunyomi": [],
       "promptTypes": [
         "reading",
         "meaning"
@@ -17625,7 +17193,7 @@
         "続",
         "置",
         "老",
-        "胃"
+        "臣"
       ]
     },
     {
@@ -17655,8 +17223,8 @@
       "distractors": [
         "置",
         "老",
-        "胃",
-        "脈"
+        "臣",
+        "良"
       ]
     },
     {
@@ -17688,9 +17256,9 @@
       ],
       "distractors": [
         "老",
-        "胃",
-        "脈",
-        "腸"
+        "臣",
+        "良",
+        "芸"
       ]
     },
     {
@@ -17717,10 +17285,10 @@
         "meaning"
       ],
       "distractors": [
-        "胃",
-        "脈",
-        "腸",
-        "臣"
+        "臣",
+        "良",
+        "芸",
+        "芽"
       ]
     },
     {
@@ -17747,95 +17315,10 @@
         "meaning"
       ],
       "distractors": [
-        "脈",
-        "腸",
-        "臣",
-        "航"
-      ]
-    },
-    {
-      "kanji": "胃",
-      "reading": [
-        "イ"
-      ],
-      "meaning": [
-        "craw",
-        "crop",
-        "paunch"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "イ"
-      ],
-      "kunyomi": [],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "腸",
-        "臣",
-        "航",
-        "良"
-      ]
-    },
-    {
-      "kanji": "脈",
-      "reading": [
-        "すじ",
-        "ミャク"
-      ],
-      "meaning": [
-        "hope",
-        "pulse",
-        "vein"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "ミャク"
-      ],
-      "kunyomi": [
-        "すじ"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "臣",
-        "航",
-        "良",
-        "芸"
-      ]
-    },
-    {
-      "kanji": "腸",
-      "reading": [
-        "はらわた",
-        "チョウ"
-      ],
-      "meaning": [
-        "bowels",
-        "guts",
-        "intestines"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "チョウ"
-      ],
-      "kunyomi": [
-        "はらわた",
-        "わた"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "航",
         "良",
         "芸",
-        "芽"
+        "芽",
+        "英"
       ]
     },
     {
@@ -17851,32 +17334,6 @@
       "onyomi": [
         "シン",
         "ジン"
-      ],
-      "kunyomi": [],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "良",
-        "芸",
-        "芽",
-        "英"
-      ]
-    },
-    {
-      "kanji": "航",
-      "reading": [
-        "コウ"
-      ],
-      "meaning": [
-        "cruise",
-        "fly",
-        "navigate"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "コウ"
       ],
       "kunyomi": [],
       "promptTypes": [
@@ -18224,7 +17681,7 @@
         "説",
         "課",
         "議",
-        "象"
+        "貨"
       ]
     },
     {
@@ -18253,8 +17710,8 @@
       "distractors": [
         "課",
         "議",
-        "象",
-        "貨"
+        "貨",
+        "軍"
       ]
     },
     {
@@ -18282,9 +17739,9 @@
       ],
       "distractors": [
         "議",
-        "象",
         "貨",
-        "貯"
+        "軍",
+        "輪"
       ]
     },
     {
@@ -18307,10 +17764,10 @@
         "meaning"
       ],
       "distractors": [
-        "象",
         "貨",
-        "貯",
-        "費"
+        "軍",
+        "輪",
+        "辞"
       ]
     },
     {
@@ -18333,40 +17790,10 @@
         "meaning"
       ],
       "distractors": [
-        "貨",
-        "貯",
-        "費",
-        "賞"
-      ]
-    },
-    {
-      "kanji": "象",
-      "reading": [
-        "かたど.る",
-        "ショウ"
-      ],
-      "meaning": [
-        "elephant",
-        "image",
-        "imitate"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "ショウ",
-        "ゾウ"
-      ],
-      "kunyomi": [
-        "かたど.る"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "貯",
-        "費",
-        "賞",
-        "軍"
+        "軍",
+        "輪",
+        "辞",
+        "辺"
       ]
     },
     {
@@ -18386,95 +17813,6 @@
       ],
       "kunyomi": [
         "たから"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "費",
-        "賞",
-        "軍",
-        "輪"
-      ]
-    },
-    {
-      "kanji": "貯",
-      "reading": [
-        "た.める",
-        "チョ"
-      ],
-      "meaning": [
-        "keep",
-        "lay in",
-        "savings"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "チョ"
-      ],
-      "kunyomi": [
-        "た.める",
-        "たくわ.える"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "賞",
-        "軍",
-        "輪",
-        "辞"
-      ]
-    },
-    {
-      "kanji": "費",
-      "reading": [
-        "つい.える",
-        "ヒ"
-      ],
-      "meaning": [
-        "consume",
-        "cost",
-        "expense"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "ヒ"
-      ],
-      "kunyomi": [
-        "つい.える",
-        "つい.やす"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "軍",
-        "輪",
-        "辞",
-        "辺"
-      ]
-    },
-    {
-      "kanji": "賞",
-      "reading": [
-        "ほ.める",
-        "ショウ"
-      ],
-      "meaning": [
-        "praise",
-        "prize",
-        "reward"
-      ],
-      "grade": 4,
-      "onyomi": [
-        "ショウ"
-      ],
-      "kunyomi": [
-        "ほ.める"
       ],
       "promptTypes": [
         "reading",
@@ -19015,7 +18353,7 @@
         "飯",
         "養",
         "験",
-        "不"
+        "茨"
       ]
     },
     {
@@ -19045,8 +18383,8 @@
       "distractors": [
         "養",
         "験",
-        "不",
-        "争"
+        "茨",
+        "媛"
       ]
     },
     {
@@ -19072,9 +18410,9 @@
       ],
       "distractors": [
         "験",
-        "不",
-        "争",
-        "付"
+        "茨",
+        "媛",
+        "岡"
       ]
     },
     {
@@ -19101,10 +18439,10 @@
         "meaning"
       ],
       "distractors": [
-        "不",
-        "争",
-        "付",
-        "令"
+        "茨",
+        "媛",
+        "岡",
+        "潟"
       ]
     },
     {
@@ -19128,6 +18466,721 @@
         "しるし",
         "ため.す",
         "ためし"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "媛",
+        "岡",
+        "潟",
+        "岐"
+      ]
+    },
+    {
+      "kanji": "茨",
+      "reading": [
+        "いばら",
+        "シ"
+      ],
+      "meaning": [
+        "briar",
+        "thorn"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "シ",
+        "ジ"
+      ],
+      "kunyomi": [
+        "いばら",
+        "かや",
+        "くさぶき"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "岡",
+        "潟",
+        "岐",
+        "熊"
+      ]
+    },
+    {
+      "kanji": "媛",
+      "reading": [
+        "ひめ",
+        "エン"
+      ],
+      "meaning": [
+        "beautiful woman",
+        "princess"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "エン"
+      ],
+      "kunyomi": [
+        "ひめ"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "潟",
+        "岐",
+        "熊",
+        "香"
+      ]
+    },
+    {
+      "kanji": "岡",
+      "reading": [
+        "おか",
+        "コウ"
+      ],
+      "meaning": [
+        "hill",
+        "knoll",
+        "mount"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "コウ"
+      ],
+      "kunyomi": [
+        "おか"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "岐",
+        "熊",
+        "香",
+        "佐"
+      ]
+    },
+    {
+      "kanji": "潟",
+      "reading": [
+        "-がた",
+        "セキ"
+      ],
+      "meaning": [
+        "lagoon"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "セキ"
+      ],
+      "kunyomi": [
+        "-がた",
+        "かた"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "熊",
+        "香",
+        "佐",
+        "埼"
+      ]
+    },
+    {
+      "kanji": "岐",
+      "reading": [
+        "キ"
+      ],
+      "meaning": [
+        "arena",
+        "branch off",
+        "fork in road"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "キ",
+        "ギ"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "香",
+        "佐",
+        "埼",
+        "崎"
+      ]
+    },
+    {
+      "kanji": "熊",
+      "reading": [
+        "くま",
+        "ユウ"
+      ],
+      "meaning": [
+        "bear"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "ユウ"
+      ],
+      "kunyomi": [
+        "くま"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "佐",
+        "埼",
+        "崎",
+        "滋"
+      ]
+    },
+    {
+      "kanji": "香",
+      "reading": [
+        "か",
+        "キョウ"
+      ],
+      "meaning": [
+        "incense",
+        "perfume",
+        "smell"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "キョウ",
+        "コウ"
+      ],
+      "kunyomi": [
+        "か",
+        "かお.り",
+        "かお.る"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "埼",
+        "崎",
+        "滋",
+        "鹿"
+      ]
+    },
+    {
+      "kanji": "佐",
+      "reading": [
+        "サ"
+      ],
+      "meaning": [
+        "assistant",
+        "help"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "サ"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "崎",
+        "滋",
+        "鹿",
+        "縄"
+      ]
+    },
+    {
+      "kanji": "埼",
+      "reading": [
+        "さい",
+        "キ"
+      ],
+      "meaning": [
+        "cape",
+        "promontory",
+        "spit"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "キ"
+      ],
+      "kunyomi": [
+        "さい",
+        "さき",
+        "みさき"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "滋",
+        "鹿",
+        "縄",
+        "井"
+      ]
+    },
+    {
+      "kanji": "崎",
+      "reading": [
+        "さい",
+        "キ"
+      ],
+      "meaning": [
+        "cape",
+        "promontory",
+        "spit"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "キ"
+      ],
+      "kunyomi": [
+        "さい",
+        "さき",
+        "みさき"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "鹿",
+        "縄",
+        "井",
+        "沖"
+      ]
+    },
+    {
+      "kanji": "滋",
+      "reading": [
+        "シ"
+      ],
+      "meaning": [
+        "be luxuriant",
+        "more & more",
+        "nourishing"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "シ",
+        "ジ"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "縄",
+        "井",
+        "沖",
+        "栃"
+      ]
+    },
+    {
+      "kanji": "鹿",
+      "reading": [
+        "か",
+        "ロク"
+      ],
+      "meaning": [
+        "deer"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "ロク"
+      ],
+      "kunyomi": [
+        "か",
+        "しか"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "井",
+        "沖",
+        "栃",
+        "奈"
+      ]
+    },
+    {
+      "kanji": "縄",
+      "reading": [
+        "ただ.す",
+        "ジョウ"
+      ],
+      "meaning": [
+        "cord",
+        "straw rope"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "ジョウ"
+      ],
+      "kunyomi": [
+        "ただ.す",
+        "なわ"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "沖",
+        "栃",
+        "奈",
+        "梨"
+      ]
+    },
+    {
+      "kanji": "井",
+      "reading": [
+        "い",
+        "ショウ"
+      ],
+      "meaning": [
+        "community",
+        "town",
+        "well"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "ショウ",
+        "セイ"
+      ],
+      "kunyomi": [
+        "い"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "栃",
+        "奈",
+        "梨",
+        "阪"
+      ]
+    },
+    {
+      "kanji": "沖",
+      "reading": [
+        "おき",
+        "チュウ"
+      ],
+      "meaning": [
+        "offing",
+        "open sea",
+        "rise high into sky"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "チュウ"
+      ],
+      "kunyomi": [
+        "おき",
+        "おきつ",
+        "ちゅう.する",
+        "わく"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "奈",
+        "梨",
+        "阪",
+        "阜"
+      ]
+    },
+    {
+      "kanji": "栃",
+      "reading": [
+        "とち"
+      ],
+      "meaning": [
+        "(kokuji)",
+        "horse chestnut"
+      ],
+      "grade": 4,
+      "onyomi": [],
+      "kunyomi": [
+        "とち"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "梨",
+        "阪",
+        "阜",
+        "賀"
+      ]
+    },
+    {
+      "kanji": "奈",
+      "reading": [
+        "いかん",
+        "ダイ"
+      ],
+      "meaning": [
+        "Nara",
+        "what?"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "ダイ",
+        "ナ",
+        "ナイ"
+      ],
+      "kunyomi": [
+        "いかん",
+        "からなし"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "阪",
+        "阜",
+        "賀",
+        "群"
+      ]
+    },
+    {
+      "kanji": "梨",
+      "reading": [
+        "なし",
+        "リ"
+      ],
+      "meaning": [
+        "pear tree"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "リ"
+      ],
+      "kunyomi": [
+        "なし"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "阜",
+        "賀",
+        "群",
+        "徳"
+      ]
+    },
+    {
+      "kanji": "阪",
+      "reading": [
+        "さか",
+        "ハン"
+      ],
+      "meaning": [
+        "heights",
+        "slope"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "ハン"
+      ],
+      "kunyomi": [
+        "さか"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "賀",
+        "群",
+        "徳",
+        "富"
+      ]
+    },
+    {
+      "kanji": "阜",
+      "reading": [
+        "フ"
+      ],
+      "meaning": [
+        "hill",
+        "left village radical (no. 170)",
+        "mound"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "フ",
+        "フウ"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "群",
+        "徳",
+        "富",
+        "城"
+      ]
+    },
+    {
+      "kanji": "賀",
+      "reading": [
+        "ガ"
+      ],
+      "meaning": [
+        "congratulations",
+        "joy"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "ガ"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "徳",
+        "富",
+        "城",
+        "不"
+      ]
+    },
+    {
+      "kanji": "群",
+      "reading": [
+        "む.れ",
+        "グン"
+      ],
+      "meaning": [
+        "cluster",
+        "crowd",
+        "flock"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "グン"
+      ],
+      "kunyomi": [
+        "む.れ",
+        "む.れる",
+        "むら",
+        "むら.がる"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "富",
+        "城",
+        "不",
+        "争"
+      ]
+    },
+    {
+      "kanji": "徳",
+      "reading": [
+        "トク"
+      ],
+      "meaning": [
+        "benevolence",
+        "commanding respect",
+        "goodness"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "トク"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "城",
+        "不",
+        "争",
+        "付"
+      ]
+    },
+    {
+      "kanji": "富",
+      "reading": [
+        "と.む",
+        "フ"
+      ],
+      "meaning": [
+        "abundant",
+        "enrich",
+        "wealth"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "フ",
+        "フウ"
+      ],
+      "kunyomi": [
+        "と.む",
+        "とみ"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "不",
+        "争",
+        "付",
+        "令"
+      ]
+    },
+    {
+      "kanji": "城",
+      "reading": [
+        "しろ",
+        "ジョウ"
+      ],
+      "meaning": [
+        "castle"
+      ],
+      "grade": 4,
+      "onyomi": [
+        "ジョウ",
+        "セイ"
+      ],
+      "kunyomi": [
+        "しろ"
       ],
       "promptTypes": [
         "reading",
@@ -19318,7 +19371,7 @@
         "価",
         "保",
         "修",
-        "俵"
+        "個"
       ]
     },
     {
@@ -19349,8 +19402,8 @@
       "distractors": [
         "保",
         "修",
-        "俵",
-        "個"
+        "個",
+        "備"
       ]
     },
     {
@@ -19377,9 +19430,9 @@
       ],
       "distractors": [
         "修",
-        "俵",
         "個",
-        "備"
+        "備",
+        "像"
       ]
     },
     {
@@ -19406,10 +19459,10 @@
         "meaning"
       ],
       "distractors": [
-        "俵",
         "個",
         "備",
-        "像"
+        "像",
+        "再"
       ]
     },
     {
@@ -19431,35 +19484,6 @@
       "kunyomi": [
         "おさ.まる",
         "おさ.める"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "個",
-        "備",
-        "像",
-        "再"
-      ]
-    },
-    {
-      "kanji": "俵",
-      "reading": [
-        "たわら",
-        "ヒョウ"
-      ],
-      "meaning": [
-        "bag",
-        "bale",
-        "counter for bags"
-      ],
-      "grade": 5,
-      "onyomi": [
-        "ヒョウ"
-      ],
-      "kunyomi": [
-        "たわら"
       ],
       "promptTypes": [
         "reading",
@@ -19552,7 +19576,7 @@
         "刊",
         "判",
         "制",
-        "券"
+        "則"
       ]
     },
     {
@@ -19581,8 +19605,8 @@
       "distractors": [
         "判",
         "制",
-        "券",
-        "則"
+        "則",
+        "効"
       ]
     },
     {
@@ -19606,9 +19630,9 @@
       ],
       "distractors": [
         "制",
-        "券",
         "則",
-        "効"
+        "効",
+        "務"
       ]
     },
     {
@@ -19635,10 +19659,10 @@
         "meaning"
       ],
       "distractors": [
-        "券",
         "則",
         "効",
-        "務"
+        "務",
+        "勢"
       ]
     },
     {
@@ -19654,30 +19678,6 @@
       "grade": 5,
       "onyomi": [
         "セイ"
-      ],
-      "kunyomi": [],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "則",
-        "効",
-        "務",
-        "勢"
-      ]
-    },
-    {
-      "kanji": "券",
-      "reading": [
-        "ケン"
-      ],
-      "meaning": [
-        "ticket"
-      ],
-      "grade": 5,
-      "onyomi": [
-        "ケン"
       ],
       "kunyomi": [],
       "promptTypes": [
@@ -20256,7 +20256,7 @@
         "婦",
         "容",
         "寄",
-        "富"
+        "導"
       ]
     },
     {
@@ -20283,8 +20283,8 @@
       "distractors": [
         "容",
         "寄",
-        "富",
-        "導"
+        "導",
+        "居"
       ]
     },
     {
@@ -20311,9 +20311,9 @@
       ],
       "distractors": [
         "寄",
-        "富",
         "導",
-        "居"
+        "居",
+        "属"
       ]
     },
     {
@@ -20339,10 +20339,10 @@
         "meaning"
       ],
       "distractors": [
-        "富",
         "導",
         "居",
-        "属"
+        "属",
+        "布"
       ]
     },
     {
@@ -20364,37 +20364,6 @@
         "-よ.り",
         "よ.せる",
         "よ.る"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "導",
-        "居",
-        "属",
-        "布"
-      ]
-    },
-    {
-      "kanji": "富",
-      "reading": [
-        "と.む",
-        "フ"
-      ],
-      "meaning": [
-        "abundant",
-        "enrich",
-        "wealth"
-      ],
-      "grade": 5,
-      "onyomi": [
-        "フ",
-        "フウ"
-      ],
-      "kunyomi": [
-        "と.む",
-        "とみ"
       ],
       "promptTypes": [
         "reading",
@@ -20647,7 +20616,7 @@
         "張",
         "往",
         "復",
-        "徳"
+        "志"
       ]
     },
     {
@@ -20680,8 +20649,8 @@
       "distractors": [
         "往",
         "復",
-        "徳",
-        "志"
+        "志",
+        "応"
       ]
     },
     {
@@ -20710,9 +20679,9 @@
       ],
       "distractors": [
         "復",
-        "徳",
         "志",
-        "応"
+        "応",
+        "快"
       ]
     },
     {
@@ -20741,10 +20710,10 @@
         "meaning"
       ],
       "distractors": [
-        "徳",
         "志",
         "応",
-        "快"
+        "快",
+        "性"
       ]
     },
     {
@@ -20770,36 +20739,10 @@
         "meaning"
       ],
       "distractors": [
-        "志",
-        "応",
-        "快",
-        "性"
-      ]
-    },
-    {
-      "kanji": "徳",
-      "reading": [
-        "トク"
-      ],
-      "meaning": [
-        "benevolence",
-        "commanding respect",
-        "goodness"
-      ],
-      "grade": 5,
-      "onyomi": [
-        "トク"
-      ],
-      "kunyomi": [],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
         "応",
         "快",
         "性",
-        "恩"
+        "情"
       ]
     },
     {
@@ -20829,8 +20772,8 @@
       "distractors": [
         "快",
         "性",
-        "恩",
-        "情"
+        "情",
+        "態"
       ]
     },
     {
@@ -20861,9 +20804,9 @@
       ],
       "distractors": [
         "性",
-        "恩",
         "情",
-        "態"
+        "態",
+        "慣"
       ]
     },
     {
@@ -20889,10 +20832,10 @@
         "meaning"
       ],
       "distractors": [
-        "恩",
         "情",
         "態",
-        "慣"
+        "慣",
+        "技"
       ]
     },
     {
@@ -20919,36 +20862,10 @@
         "meaning"
       ],
       "distractors": [
-        "情",
         "態",
         "慣",
-        "承"
-      ]
-    },
-    {
-      "kanji": "恩",
-      "reading": [
-        "オン"
-      ],
-      "meaning": [
-        "benefit",
-        "blessing",
-        "favor"
-      ],
-      "grade": 5,
-      "onyomi": [
-        "オン"
-      ],
-      "kunyomi": [],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "態",
-        "慣",
-        "承",
-        "技"
+        "技",
+        "招"
       ]
     },
     {
@@ -20976,9 +20893,9 @@
       ],
       "distractors": [
         "慣",
-        "承",
         "技",
-        "招"
+        "招",
+        "授"
       ]
     },
     {
@@ -21004,10 +20921,10 @@
         "meaning"
       ],
       "distractors": [
-        "承",
         "技",
         "招",
-        "授"
+        "授",
+        "採"
       ]
     },
     {
@@ -21028,37 +20945,6 @@
       "kunyomi": [
         "な.らす",
         "な.れる"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "技",
-        "招",
-        "授",
-        "採"
-      ]
-    },
-    {
-      "kanji": "承",
-      "reading": [
-        "う.ける",
-        "ショウ"
-      ],
-      "meaning": [
-        "acquiesce",
-        "be informed",
-        "hear"
-      ],
-      "grade": 5,
-      "onyomi": [
-        "ショウ",
-        "ジョウ"
-      ],
-      "kunyomi": [
-        "う.ける",
-        "うけたまわ.る"
       ],
       "promptTypes": [
         "reading",
@@ -21245,7 +21131,7 @@
         "支",
         "政",
         "故",
-        "敵"
+        "断"
       ]
     },
     {
@@ -21277,8 +21163,8 @@
       "distractors": [
         "政",
         "故",
-        "敵",
-        "断"
+        "断",
+        "旧"
       ]
     },
     {
@@ -21307,9 +21193,9 @@
       ],
       "distractors": [
         "故",
-        "敵",
         "断",
-        "旧"
+        "旧",
+        "易"
       ]
     },
     {
@@ -21336,10 +21222,10 @@
         "meaning"
       ],
       "distractors": [
-        "敵",
         "断",
         "旧",
-        "易"
+        "易",
+        "暴"
       ]
     },
     {
@@ -21361,37 +21247,6 @@
         "ふる.い",
         "もと",
         "ゆえ"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "断",
-        "旧",
-        "易",
-        "暴"
-      ]
-    },
-    {
-      "kanji": "敵",
-      "reading": [
-        "あだ",
-        "テキ"
-      ],
-      "meaning": [
-        "enemy",
-        "foe",
-        "opponent"
-      ],
-      "grade": 5,
-      "onyomi": [
-        "テキ"
-      ],
-      "kunyomi": [
-        "あだ",
-        "かたき",
-        "かな.う"
       ],
       "promptTypes": [
         "reading",
@@ -22872,7 +22727,7 @@
         "績",
         "織",
         "罪",
-        "群"
+        "義"
       ]
     },
     {
@@ -22901,8 +22756,8 @@
       "distractors": [
         "織",
         "罪",
-        "群",
-        "義"
+        "義",
+        "耕"
       ]
     },
     {
@@ -22926,9 +22781,9 @@
       ],
       "distractors": [
         "罪",
-        "群",
         "義",
-        "耕"
+        "耕",
+        "職"
       ]
     },
     {
@@ -22958,10 +22813,10 @@
         "meaning"
       ],
       "distractors": [
-        "群",
         "義",
         "耕",
-        "職"
+        "職",
+        "肥"
       ]
     },
     {
@@ -22981,38 +22836,6 @@
       ],
       "kunyomi": [
         "つみ"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "義",
-        "耕",
-        "職",
-        "肥"
-      ]
-    },
-    {
-      "kanji": "群",
-      "reading": [
-        "む.れ",
-        "グン"
-      ],
-      "meaning": [
-        "cluster",
-        "crowd",
-        "flock"
-      ],
-      "grade": 5,
-      "onyomi": [
-        "グン"
-      ],
-      "kunyomi": [
-        "む.れ",
-        "む.れる",
-        "むら",
-        "むら.がる"
       ],
       "promptTypes": [
         "reading",
@@ -23077,7 +22900,7 @@
         "肥",
         "能",
         "興",
-        "舌"
+        "舎"
       ]
     },
     {
@@ -23103,8 +22926,8 @@
       "distractors": [
         "能",
         "興",
-        "舌",
-        "舎"
+        "舎",
+        "術"
       ]
     },
     {
@@ -23135,9 +22958,9 @@
       ],
       "distractors": [
         "興",
-        "舌",
         "舎",
-        "術"
+        "術",
+        "衛"
       ]
     },
     {
@@ -23164,10 +22987,10 @@
         "meaning"
       ],
       "distractors": [
-        "舌",
         "舎",
         "術",
-        "衛"
+        "衛",
+        "製"
       ]
     },
     {
@@ -23189,35 +23012,6 @@
       "kunyomi": [
         "おこ.す",
         "おこ.る"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "舎",
-        "術",
-        "衛",
-        "製"
-      ]
-    },
-    {
-      "kanji": "舌",
-      "reading": [
-        "した",
-        "ゼツ"
-      ],
-      "meaning": [
-        "clapper",
-        "reed",
-        "tongue"
-      ],
-      "grade": 5,
-      "onyomi": [
-        "ゼツ"
-      ],
-      "kunyomi": [
-        "した"
       ],
       "promptTypes": [
         "reading",
@@ -23712,7 +23506,7 @@
         "責",
         "貸",
         "貿",
-        "賀"
+        "資"
       ]
     },
     {
@@ -23740,8 +23534,8 @@
       "distractors": [
         "貸",
         "貿",
-        "賀",
-        "資"
+        "資",
+        "賛"
       ]
     },
     {
@@ -23768,9 +23562,9 @@
       ],
       "distractors": [
         "貿",
-        "賀",
         "資",
-        "賛"
+        "賛",
+        "質"
       ]
     },
     {
@@ -23796,10 +23590,10 @@
         "meaning"
       ],
       "distractors": [
-        "賀",
         "資",
         "賛",
-        "質"
+        "質",
+        "輸"
       ]
     },
     {
@@ -23814,31 +23608,6 @@
       "grade": 5,
       "onyomi": [
         "ボウ"
-      ],
-      "kunyomi": [],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "資",
-        "賛",
-        "質",
-        "輸"
-      ]
-    },
-    {
-      "kanji": "賀",
-      "reading": [
-        "ガ"
-      ],
-      "meaning": [
-        "congratulations",
-        "joy"
-      ],
-      "grade": 5,
-      "onyomi": [
-        "ガ"
       ],
       "kunyomi": [],
       "promptTypes": [
@@ -23904,7 +23673,7 @@
         "輸",
         "述",
         "迷",
-        "退"
+        "逆"
       ]
     },
     {
@@ -23928,8 +23697,8 @@
       "distractors": [
         "述",
         "迷",
-        "退",
-        "逆"
+        "逆",
+        "造"
       ]
     },
     {
@@ -23954,9 +23723,9 @@
       ],
       "distractors": [
         "迷",
-        "退",
         "逆",
-        "造"
+        "造",
+        "過"
       ]
     },
     {
@@ -23982,10 +23751,10 @@
         "meaning"
       ],
       "distractors": [
-        "退",
         "逆",
         "造",
-        "過"
+        "過",
+        "適"
       ]
     },
     {
@@ -24005,40 +23774,6 @@
       ],
       "kunyomi": [
         "まよ.う"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "逆",
-        "造",
-        "過",
-        "適"
-      ]
-    },
-    {
-      "kanji": "退",
-      "reading": [
-        "しりぞ.く",
-        "タイ"
-      ],
-      "meaning": [
-        "expel",
-        "reject",
-        "repel"
-      ],
-      "grade": 5,
-      "onyomi": [
-        "タイ"
-      ],
-      "kunyomi": [
-        "しりぞ.く",
-        "しりぞ.ける",
-        "ど.く",
-        "の.く",
-        "の.ける",
-        "ひ.く"
       ],
       "promptTypes": [
         "reading",
@@ -24145,7 +23880,7 @@
         "酸",
         "鉱",
         "銅",
-        "銭"
+        "防"
       ]
     },
     {
@@ -24173,8 +23908,8 @@
       "distractors": [
         "鉱",
         "銅",
-        "銭",
-        "防"
+        "防",
+        "限"
       ]
     },
     {
@@ -24201,9 +23936,9 @@
       ],
       "distractors": [
         "銅",
-        "銭",
         "防",
-        "限"
+        "限",
+        "険"
       ]
     },
     {
@@ -24228,10 +23963,10 @@
         "meaning"
       ],
       "distractors": [
-        "銭",
         "防",
         "限",
-        "険"
+        "険",
+        "際"
       ]
     },
     {
@@ -24249,37 +23984,6 @@
       ],
       "kunyomi": [
         "あかがね"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "防",
-        "限",
-        "険",
-        "際"
-      ]
-    },
-    {
-      "kanji": "銭",
-      "reading": [
-        "すき",
-        "セン"
-      ],
-      "meaning": [
-        ".01 yen",
-        "coin",
-        "money"
-      ],
-      "grade": 5,
-      "onyomi": [
-        "セン",
-        "ゼン"
-      ],
-      "kunyomi": [
-        "すき",
-        "ぜに"
       ],
       "promptTypes": [
         "reading",
@@ -24349,7 +24053,7 @@
         "際",
         "雑",
         "非",
-        "預"
+        "領"
       ]
     },
     {
@@ -24377,8 +24081,8 @@
       "distractors": [
         "雑",
         "非",
-        "預",
-        "領"
+        "領",
+        "額"
       ]
     },
     {
@@ -24406,9 +24110,9 @@
       ],
       "distractors": [
         "非",
-        "預",
         "領",
-        "額"
+        "額",
+        "飼"
       ]
     },
     {
@@ -24434,10 +24138,10 @@
         "meaning"
       ],
       "distractors": [
-        "預",
         "領",
         "額",
-        "飼"
+        "飼",
+        "囲"
       ]
     },
     {
@@ -24463,40 +24167,10 @@
         "meaning"
       ],
       "distractors": [
-        "領",
         "額",
         "飼",
-        "久"
-      ]
-    },
-    {
-      "kanji": "預",
-      "reading": [
-        "あず.かる",
-        "ヨ"
-      ],
-      "meaning": [
-        "custody",
-        "deposit",
-        "entrust to"
-      ],
-      "grade": 5,
-      "onyomi": [
-        "ヨ"
-      ],
-      "kunyomi": [
-        "あず.かる",
-        "あず.ける"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "額",
-        "飼",
-        "久",
-        "仏"
+        "囲",
+        "紀"
       ]
     },
     {
@@ -24523,9 +24197,9 @@
       ],
       "distractors": [
         "飼",
-        "久",
-        "仏",
-        "仮"
+        "囲",
+        "紀",
+        "喜"
       ]
     },
     {
@@ -24551,10 +24225,10 @@
         "meaning"
       ],
       "distractors": [
-        "久",
-        "仏",
-        "仮",
-        "件"
+        "囲",
+        "紀",
+        "喜",
+        "救"
       ]
     },
     {
@@ -24575,6 +24249,610 @@
       "kunyomi": [
         "か.う"
       ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "紀",
+        "喜",
+        "救",
+        "型"
+      ]
+    },
+    {
+      "kanji": "囲",
+      "reading": [
+        "かこ.い",
+        "イ"
+      ],
+      "meaning": [
+        "besiege",
+        "encircle",
+        "enclosure"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "イ"
+      ],
+      "kunyomi": [
+        "かこ.い",
+        "かこ.う",
+        "かこ.む"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "喜",
+        "救",
+        "型",
+        "航"
+      ]
+    },
+    {
+      "kanji": "紀",
+      "reading": [
+        "キ"
+      ],
+      "meaning": [
+        "account",
+        "annals",
+        "chronicle"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "キ"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "救",
+        "型",
+        "航",
+        "告"
+      ]
+    },
+    {
+      "kanji": "喜",
+      "reading": [
+        "よろこ.ばす",
+        "キ"
+      ],
+      "meaning": [
+        "rejoice",
+        "take pleasure in"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "キ"
+      ],
+      "kunyomi": [
+        "よろこ.ばす",
+        "よろこ.ぶ"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "型",
+        "航",
+        "告",
+        "殺"
+      ]
+    },
+    {
+      "kanji": "救",
+      "reading": [
+        "すく.う",
+        "キュウ"
+      ],
+      "meaning": [
+        "help",
+        "reclaim",
+        "rescue"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "キュウ"
+      ],
+      "kunyomi": [
+        "すく.う"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "航",
+        "告",
+        "殺",
+        "士"
+      ]
+    },
+    {
+      "kanji": "型",
+      "reading": [
+        "-がた",
+        "ケイ"
+      ],
+      "meaning": [
+        "model",
+        "mould",
+        "type"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "ケイ"
+      ],
+      "kunyomi": [
+        "-がた",
+        "かた"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "告",
+        "殺",
+        "士",
+        "史"
+      ]
+    },
+    {
+      "kanji": "航",
+      "reading": [
+        "コウ"
+      ],
+      "meaning": [
+        "cruise",
+        "fly",
+        "navigate"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "コウ"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "殺",
+        "士",
+        "史",
+        "象"
+      ]
+    },
+    {
+      "kanji": "告",
+      "reading": [
+        "つ.げる",
+        "コク"
+      ],
+      "meaning": [
+        "announce",
+        "inform",
+        "revelation"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "コク"
+      ],
+      "kunyomi": [
+        "つ.げる"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "士",
+        "史",
+        "象",
+        "賞"
+      ]
+    },
+    {
+      "kanji": "殺",
+      "reading": [
+        "-ごろ.し",
+        "サイ"
+      ],
+      "meaning": [
+        "butcher",
+        "diminish",
+        "kill"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "サイ",
+        "サツ",
+        "セツ"
+      ],
+      "kunyomi": [
+        "-ごろ.し",
+        "あや.める",
+        "ころ.す",
+        "そ.ぐ"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "史",
+        "象",
+        "賞",
+        "貯"
+      ]
+    },
+    {
+      "kanji": "士",
+      "reading": [
+        "さむらい",
+        "シ"
+      ],
+      "meaning": [
+        "gentleman",
+        "samurai",
+        "samurai radical (no. 33)"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "シ"
+      ],
+      "kunyomi": [
+        "さむらい"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "象",
+        "賞",
+        "貯",
+        "停"
+      ]
+    },
+    {
+      "kanji": "史",
+      "reading": [
+        "シ"
+      ],
+      "meaning": [
+        "chronicle",
+        "history"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "シ"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "賞",
+        "貯",
+        "停",
+        "堂"
+      ]
+    },
+    {
+      "kanji": "象",
+      "reading": [
+        "かたど.る",
+        "ショウ"
+      ],
+      "meaning": [
+        "elephant",
+        "image",
+        "imitate"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "ショウ",
+        "ゾウ"
+      ],
+      "kunyomi": [
+        "かたど.る"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "貯",
+        "停",
+        "堂",
+        "得"
+      ]
+    },
+    {
+      "kanji": "賞",
+      "reading": [
+        "ほ.める",
+        "ショウ"
+      ],
+      "meaning": [
+        "praise",
+        "prize",
+        "reward"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "ショウ"
+      ],
+      "kunyomi": [
+        "ほ.める"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "停",
+        "堂",
+        "得",
+        "毒"
+      ]
+    },
+    {
+      "kanji": "貯",
+      "reading": [
+        "た.める",
+        "チョ"
+      ],
+      "meaning": [
+        "keep",
+        "lay in",
+        "savings"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "チョ"
+      ],
+      "kunyomi": [
+        "た.める",
+        "たくわ.える"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "堂",
+        "得",
+        "毒",
+        "費"
+      ]
+    },
+    {
+      "kanji": "停",
+      "reading": [
+        "と.まる",
+        "テイ"
+      ],
+      "meaning": [
+        "halt",
+        "stopping"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "テイ"
+      ],
+      "kunyomi": [
+        "と.まる",
+        "と.める"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "得",
+        "毒",
+        "費",
+        "粉"
+      ]
+    },
+    {
+      "kanji": "堂",
+      "reading": [
+        "ドウ"
+      ],
+      "meaning": [
+        "hall",
+        "public chamber"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "ドウ"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "毒",
+        "費",
+        "粉",
+        "脈"
+      ]
+    },
+    {
+      "kanji": "得",
+      "reading": [
+        "う.る",
+        "トク"
+      ],
+      "meaning": [
+        "able to",
+        "acquire",
+        "advantage"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "トク"
+      ],
+      "kunyomi": [
+        "う.る",
+        "え.る"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "費",
+        "粉",
+        "脈",
+        "歴"
+      ]
+    },
+    {
+      "kanji": "毒",
+      "reading": [
+        "ドク"
+      ],
+      "meaning": [
+        "germ",
+        "harm",
+        "injury"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "ドク"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "粉",
+        "脈",
+        "歴",
+        "久"
+      ]
+    },
+    {
+      "kanji": "費",
+      "reading": [
+        "つい.える",
+        "ヒ"
+      ],
+      "meaning": [
+        "consume",
+        "cost",
+        "expense"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "ヒ"
+      ],
+      "kunyomi": [
+        "つい.える",
+        "つい.やす"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "脈",
+        "歴",
+        "久",
+        "仏"
+      ]
+    },
+    {
+      "kanji": "粉",
+      "reading": [
+        "こ",
+        "フン"
+      ],
+      "meaning": [
+        "dust",
+        "flour",
+        "powder"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "フン"
+      ],
+      "kunyomi": [
+        "こ",
+        "こな",
+        "デシメートル"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "歴",
+        "久",
+        "仏",
+        "仮"
+      ]
+    },
+    {
+      "kanji": "脈",
+      "reading": [
+        "すじ",
+        "ミャク"
+      ],
+      "meaning": [
+        "hope",
+        "pulse",
+        "vein"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "ミャク"
+      ],
+      "kunyomi": [
+        "すじ"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "久",
+        "仏",
+        "仮",
+        "件"
+      ]
+    },
+    {
+      "kanji": "歴",
+      "reading": [
+        "レキ"
+      ],
+      "meaning": [
+        "continuation",
+        "curriculum",
+        "passage of time"
+      ],
+      "grade": 5,
+      "onyomi": [
+        "レキ",
+        "レッキ"
+      ],
+      "kunyomi": [],
       "promptTypes": [
         "reading",
         "meaning"
@@ -25354,7 +25632,7 @@
         "善",
         "困",
         "垂",
-        "城"
+        "域"
       ]
     },
     {
@@ -25382,8 +25660,8 @@
       "distractors": [
         "困",
         "垂",
-        "城",
-        "域"
+        "域",
+        "奏"
       ]
     },
     {
@@ -25413,9 +25691,9 @@
       ],
       "distractors": [
         "垂",
-        "城",
         "域",
-        "奏"
+        "奏",
+        "奮"
       ]
     },
     {
@@ -25441,10 +25719,10 @@
         "meaning"
       ],
       "distractors": [
-        "城",
         "域",
         "奏",
-        "奮"
+        "奮",
+        "姿"
       ]
     },
     {
@@ -25468,34 +25746,6 @@
         "た.れ",
         "た.れる",
         "なんなんと.す"
-      ],
-      "promptTypes": [
-        "reading",
-        "meaning"
-      ],
-      "distractors": [
-        "域",
-        "奏",
-        "奮",
-        "姿"
-      ]
-    },
-    {
-      "kanji": "城",
-      "reading": [
-        "しろ",
-        "ジョウ"
-      ],
-      "meaning": [
-        "castle"
-      ],
-      "grade": 6,
-      "onyomi": [
-        "ジョウ",
-        "セイ"
-      ],
-      "kunyomi": [
-        "しろ"
       ],
       "promptTypes": [
         "reading",
@@ -29773,7 +30023,7 @@
         "革",
         "頂",
         "骨",
-        "並"
+        "胃"
       ]
     },
     {
@@ -29806,8 +30056,8 @@
       "distractors": [
         "頂",
         "骨",
-        "並",
-        "乱"
+        "胃",
+        "腸"
       ]
     },
     {
@@ -29834,9 +30084,9 @@
       ],
       "distractors": [
         "骨",
-        "並",
-        "乱",
-        "乳"
+        "胃",
+        "腸",
+        "恩"
       ]
     },
     {
@@ -29863,10 +30113,10 @@
         "meaning"
       ],
       "distractors": [
-        "並",
-        "乱",
-        "乳",
-        "亡"
+        "胃",
+        "腸",
+        "恩",
+        "券"
       ]
     },
     {
@@ -29886,6 +30136,327 @@
       ],
       "kunyomi": [
         "ほね"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "腸",
+        "恩",
+        "券",
+        "承"
+      ]
+    },
+    {
+      "kanji": "胃",
+      "reading": [
+        "イ"
+      ],
+      "meaning": [
+        "craw",
+        "crop",
+        "paunch"
+      ],
+      "grade": 6,
+      "onyomi": [
+        "イ"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "恩",
+        "券",
+        "承",
+        "舌"
+      ]
+    },
+    {
+      "kanji": "腸",
+      "reading": [
+        "はらわた",
+        "チョウ"
+      ],
+      "meaning": [
+        "bowels",
+        "guts",
+        "intestines"
+      ],
+      "grade": 6,
+      "onyomi": [
+        "チョウ"
+      ],
+      "kunyomi": [
+        "はらわた",
+        "わた"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "券",
+        "承",
+        "舌",
+        "銭"
+      ]
+    },
+    {
+      "kanji": "恩",
+      "reading": [
+        "オン"
+      ],
+      "meaning": [
+        "benefit",
+        "blessing",
+        "favor"
+      ],
+      "grade": 6,
+      "onyomi": [
+        "オン"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "承",
+        "舌",
+        "銭",
+        "退"
+      ]
+    },
+    {
+      "kanji": "券",
+      "reading": [
+        "ケン"
+      ],
+      "meaning": [
+        "ticket"
+      ],
+      "grade": 6,
+      "onyomi": [
+        "ケン"
+      ],
+      "kunyomi": [],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "舌",
+        "銭",
+        "退",
+        "敵"
+      ]
+    },
+    {
+      "kanji": "承",
+      "reading": [
+        "う.ける",
+        "ショウ"
+      ],
+      "meaning": [
+        "acquiesce",
+        "be informed",
+        "hear"
+      ],
+      "grade": 6,
+      "onyomi": [
+        "ショウ",
+        "ジョウ"
+      ],
+      "kunyomi": [
+        "う.ける",
+        "うけたまわ.る"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "銭",
+        "退",
+        "敵",
+        "俵"
+      ]
+    },
+    {
+      "kanji": "舌",
+      "reading": [
+        "した",
+        "ゼツ"
+      ],
+      "meaning": [
+        "clapper",
+        "reed",
+        "tongue"
+      ],
+      "grade": 6,
+      "onyomi": [
+        "ゼツ"
+      ],
+      "kunyomi": [
+        "した"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "退",
+        "敵",
+        "俵",
+        "預"
+      ]
+    },
+    {
+      "kanji": "銭",
+      "reading": [
+        "すき",
+        "セン"
+      ],
+      "meaning": [
+        ".01 yen",
+        "coin",
+        "money"
+      ],
+      "grade": 6,
+      "onyomi": [
+        "セン",
+        "ゼン"
+      ],
+      "kunyomi": [
+        "すき",
+        "ぜに"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "敵",
+        "俵",
+        "預",
+        "並"
+      ]
+    },
+    {
+      "kanji": "退",
+      "reading": [
+        "しりぞ.く",
+        "タイ"
+      ],
+      "meaning": [
+        "expel",
+        "reject",
+        "repel"
+      ],
+      "grade": 6,
+      "onyomi": [
+        "タイ"
+      ],
+      "kunyomi": [
+        "しりぞ.く",
+        "しりぞ.ける",
+        "ど.く",
+        "の.く",
+        "の.ける",
+        "ひ.く"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "俵",
+        "預",
+        "並",
+        "乱"
+      ]
+    },
+    {
+      "kanji": "敵",
+      "reading": [
+        "あだ",
+        "テキ"
+      ],
+      "meaning": [
+        "enemy",
+        "foe",
+        "opponent"
+      ],
+      "grade": 6,
+      "onyomi": [
+        "テキ"
+      ],
+      "kunyomi": [
+        "あだ",
+        "かたき",
+        "かな.う"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "預",
+        "並",
+        "乱",
+        "乳"
+      ]
+    },
+    {
+      "kanji": "俵",
+      "reading": [
+        "たわら",
+        "ヒョウ"
+      ],
+      "meaning": [
+        "bag",
+        "bale",
+        "counter for bags"
+      ],
+      "grade": 6,
+      "onyomi": [
+        "ヒョウ"
+      ],
+      "kunyomi": [
+        "たわら"
+      ],
+      "promptTypes": [
+        "reading",
+        "meaning"
+      ],
+      "distractors": [
+        "並",
+        "乱",
+        "乳",
+        "亡"
+      ]
+    },
+    {
+      "kanji": "預",
+      "reading": [
+        "あず.かる",
+        "ヨ"
+      ],
+      "meaning": [
+        "custody",
+        "deposit",
+        "entrust to"
+      ],
+      "grade": 6,
+      "onyomi": [
+        "ヨ"
+      ],
+      "kunyomi": [
+        "あず.かる",
+        "あず.ける"
       ],
       "promptTypes": [
         "reading",
@@ -66772,17 +67343,15 @@
     {
       "kanji": "力",
       "reading": [
-        "ちから",
-        "リイ"
+        "ちから"
       ],
       "meaning": [
-        "bear up",
-        "exert",
-        "power"
+        "power",
+        "strength",
+        "force"
       ],
       "grade": "AP Japanese",
       "onyomi": [
-        "リイ",
         "リキ",
         "リョク"
       ],
@@ -70727,17 +71296,15 @@
     {
       "kanji": "力",
       "reading": [
-        "ちから",
-        "リイ"
+        "ちから"
       ],
       "meaning": [
-        "bear up",
-        "exert",
-        "power"
+        "power",
+        "strength",
+        "force"
       ],
       "grade": "JLPT N4",
       "onyomi": [
-        "リイ",
         "リキ",
         "リョク"
       ],

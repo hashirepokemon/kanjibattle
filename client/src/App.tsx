@@ -399,7 +399,7 @@ export default function App() {
                 <option value="custom">Teacher Custom Kanji Mode</option>
                 <option value="review">Today Review Mode</option>
               </select>
-              {view.settings.mode === 'grade' && <><label className="label">Grade</label><select className="input" value={view.settings.grade} onChange={(e) => updateSettings({ grade: e.target.value as GradeKey })}>{grades.map((g) => <option key={g.value} value={g.value}>{g.label}</option>)}</select></>}
+              {view.settings.mode === 'grade' && <><label className="label">Learning Level</label><div className="level-select-wrap"><span aria-hidden="true">🎓</span><select className="input level-select" value={view.settings.grade} onChange={(e) => updateSettings({ grade: e.target.value as GradeKey })}>{grades.map((g) => <option key={g.value} value={g.value}>{g.label}</option>)}</select></div><p className="-mt-2 text-sm font-bold text-slate-500">Grade levels follow the current MEXT grade allocation. JLPT and AP use their dedicated lists.</p></>}
               {view.settings.mode !== 'grade' && <><label className="label">Kanji for this game</label><textarea className="input min-h-28" value={view.settings.customKanjiInput} onChange={(e) => updateSettings({ customKanjiInput: e.target.value })} placeholder={'\u68ee, \u6797, \u5ddd, \u5c71, \u706b, \u6c34'} /></>}
               <div className="grid gap-4 md:grid-cols-2">
                 <div><label className="label">Prompt Type</label><select className="input" value={view.settings.promptMode} onChange={(e) => updateSettings({ promptMode: e.target.value as GameSettings['promptMode'] })}><option value="random">Random reading or meaning</option><option value="reading">Reading only</option><option value="meaning">Meaning only</option></select></div>
@@ -425,41 +425,48 @@ export default function App() {
   const hintCountdown = Math.max(0, (view.settings.turnSeconds - 10) - (view.currentTurn?.secondsLeft ?? 0));
   const answerLocked = Boolean(view.currentTurn?.answerLocked);
 
+  const selectedLevel = grades.find((grade) => grade.value === view.settings.grade)?.label ?? 'Custom lesson';
+
   return (
-    <main className="min-h-screen bg-gradient-to-br from-sora/25 via-white to-yuzu/30 p-3 text-sumi">
+    <main className="game-shell min-h-screen p-3 text-sumi">
       <MascotPopups />
       {answerFeedback && (
         <div key={answerFeedback.nonce} className={`feedback-overlay ${answerFeedback.correct ? 'feedback-correct' : 'feedback-wrong'}`} aria-live="polite">
           <div className={answerFeedback.correct ? 'sparkle-burst' : 'wrong-burst'}>{answerFeedback.correct ? '✨' : '×'}</div>
         </div>
       )}
-      <section className="mx-auto grid max-w-7xl gap-4 lg:grid-cols-[1fr_330px]">
-        <div>
-          <div className="mb-3 grid gap-3 rounded-[1.5rem] bg-white p-4 shadow-soft md:grid-cols-4">
-            <div><p className="meta">Round</p><p className="status-text">{view.currentTurn?.round} / {view.settings.roundLimit}</p></div>
-            <div><p className="meta">Time Left</p><p className="status-text text-sakura">{view.currentTurn?.secondsLeft}s</p></div>
-            <div><p className="meta">Drawer</p><p className="status-text">{view.currentTurn?.drawerName}</p></div>
-            <div><p className="meta">Status</p><p className="status-text text-matcha">{view.currentTurn?.statusMessage}</p></div>
-          </div>
-
-          {view.isDrawer && <div className="mb-3 rounded-[1.5rem] bg-yuzu/40 p-4 text-center">
-            <p className="text-lg font-black">Prompt: {view.currentTurn?.prompt}</p>
-            <p className="font-bold">Write the kanji that matches this {answerKind}.</p>
-            {view.currentTurn?.answer
-              ? <p className="mt-2 rounded-2xl bg-white/80 p-3 text-2xl font-black text-sakura">10-second hint: {view.currentTurn.answer}</p>
-              : <p className="mt-2 font-bold text-slate-600">The kanji hint appears {hintCountdown > 0 ? `in ${hintCountdown}s` : 'soon'}.</p>}
-          </div>}
-
-          {!view.isDrawer && <div className="mb-3 rounded-[1.5rem] bg-sora/20 p-4 text-center text-lg font-black">Look at the handwritten kanji and choose the correct {answerKind}.</div>}
+      <section className="mx-auto max-w-[1440px]">
+        <header className="game-header">
+          <div><p className="text-sm font-black text-sakura">Kanji Draw Battle</p><p className="text-2xl font-black">Round {view.currentTurn?.round} <span className="text-base text-slate-400">of {view.settings.roundLimit}</span></p></div>
+          <div className="game-header-level"><span aria-hidden="true">🎓</span><span>{selectedLevel}</span></div>
+          <p className="game-header-status">{view.currentTurn?.statusMessage}</p>
+        </header>
+        <div className="mt-3 grid gap-4 lg:grid-cols-[minmax(0,1fr)_310px]">
+        <div className="min-w-0">
+          {view.isDrawer ? <section className="prompt-card" aria-label="Your drawing prompt">
+            <div className="prompt-card-main">
+              <p className="prompt-label"><span aria-hidden="true">✏️</span> Draw this kanji</p>
+              <p className="prompt-value">{view.currentTurn?.prompt}</p>
+              <p className="prompt-instruction">Write one kanji · shown as a {answerKind}</p>
+              {view.currentTurn?.answer
+                ? <p className="prompt-hint">Hint: write <span>{view.currentTurn.answer}</span></p>
+                : <p className="prompt-hint-soon">Kanji hint in {hintCountdown > 0 ? `${hintCountdown}s` : 'a moment'} — start from the reading or meaning above.</p>}
+            </div>
+            <div className="prompt-timer" aria-label={`${view.currentTurn?.secondsLeft} seconds left`}><span aria-hidden="true">⏱</span><strong>{view.currentTurn?.secondsLeft}</strong><small>sec</small></div>
+          </section> : <section className="guesser-banner">
+            <div><p className="text-xl font-black">Watch the drawing!</p><p className="font-bold text-slate-600">Choose the matching {answerKind} below the canvas.</p></div>
+            <div className="guesser-timer"><strong>{view.currentTurn?.secondsLeft}</strong><span>sec</span></div>
+          </section>}
           <DrawingCanvas canDraw={view.isDrawer} phase={view.phase} />
           {!view.isDrawer && view.currentTurn?.choices && <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4">{view.currentTurn.choices.map((choice, index) => <button key={choice} className="choice-button" disabled={answerLocked || view.phase !== 'playing'} onClick={() => socket.emit('answer:submit', { choice })}><span className="choice-prefix">{String.fromCharCode(65 + index)}.</span><span className="choice-text">{choice}</span></button>)}</div>}
           {!view.isDrawer && answerLocked && view.phase === 'playing' && <div className="mt-4 rounded-3xl bg-red-50 p-5 text-center text-xl font-black text-red-600 shadow-soft">You missed this one. Wait until another player answers correctly.</div>}
           {view.currentTurn?.answer && !view.isDrawer && view.phase === 'turn-reveal' && <div className="mt-4 rounded-3xl bg-white p-5 text-center text-3xl font-black shadow-soft">Answer: {view.currentTurn.answer}<span className="block text-xl text-slate-600">{answerKind}: {view.currentTurn.correctChoice}</span></div>}
         </div>
-        <aside className="panel h-fit">
-          <h2 className="text-2xl font-black">Score</h2>
-          <div className="mt-4 grid gap-3">{view.players.map((p) => <div key={p.id} className="rounded-2xl bg-slate-50 p-3"><div className="flex justify-between font-black"><span>{p.name}</span><span>{p.score} pts</span></div><p className="mt-1 text-sm font-bold text-slate-500">Correct {p.correctCount} / Wrong {p.wrongCount} / Help {p.roundsWithoutCorrect >= 3 ? '2 choices' : p.score === 0 ? '3 choices' : 'normal'}</p></div>)}</div>
+        <aside className="score-panel h-fit">
+          <div className="flex items-center justify-between"><h2 className="text-2xl font-black">Players</h2><span className="text-sm font-black text-sora">{view.players.length} playing</span></div>
+          <div className="mt-4 grid gap-3">{view.players.map((p, index) => <div key={p.id} className={`player-row ${p.id === view.currentTurn?.drawerId ? 'player-drawing' : ''}`}><img src={mascotImages[index % mascotImages.length]} alt="" /><div className="min-w-0 flex-1"><div className="flex items-center justify-between gap-2 font-black"><span className="truncate">{p.name}{p.id === view.you?.id ? ' (You)' : ''}</span><span className="shrink-0 text-sakura">{p.score} pts</span></div><p className="mt-1 text-xs font-bold text-slate-500">{p.id === view.currentTurn?.drawerId ? 'Drawing now' : `${p.correctCount} correct · ${p.wrongCount} missed`}</p></div></div>)}</div>
         </aside>
+        </div>
       </section>
     </main>
   );

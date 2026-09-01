@@ -40,6 +40,19 @@ function pick(items, label) {
   return items[randomIndex(items, label)];
 }
 
+const preferredMeanings = new Map([
+  ['力', 'power'],
+]);
+
+function preferredReading(entry) {
+  const reading = entry.reading?.[0] ?? entry.kunyomi?.[0] ?? entry.onyomi?.[0] ?? entry.kanji;
+  return entry.readingHints?.[reading] ?? reading;
+}
+
+function preferredMeaning(entry) {
+  return preferredMeanings.get(entry.kanji) ?? entry.meaning?.[0] ?? 'meaning unavailable';
+}
+
 function choiceCount(player, room) {
   if (!room.settings.rescueEnabled) return 4;
   if (player.roundsWithoutCorrect >= 3) return 2;
@@ -48,15 +61,15 @@ function choiceCount(player, room) {
 }
 
 function readingChoiceText(entry, reading) {
-  const meaning = entry.meaning?.[0] ?? 'meaning unavailable';
-  const baseReading = reading ?? entry.reading?.[0] ?? entry.kanji;
+  const meaning = preferredMeaning(entry);
+  const baseReading = reading ?? preferredReading(entry);
   const displayReading = entry.readingHints?.[baseReading] ?? baseReading;
   return `${displayReading} (${meaning})`;
 }
 
 function choiceText(entry, promptType) {
-  if (promptType === 'reading') return readingChoiceText(entry, entry.reading?.[0]);
-  return entry.meaning?.[0] ?? entry.kanji;
+  if (promptType === 'reading') return readingChoiceText(entry, preferredReading(entry));
+  return preferredMeaning(entry);
 }
 
 function choicesFor(player, entry, room, promptType, correctChoice) {
@@ -124,7 +137,7 @@ function startTurn(io, room, drawerId) {
   const entry = pick(room.entries, 'kanji');
   const allowed = entry.promptTypes?.length ? entry.promptTypes : ['reading', 'meaning'];
   const promptType = room.settings.promptMode === 'random' ? pick(allowed, 'promptType') : room.settings.promptMode;
-  const rawPrompt = promptType === 'reading' ? pick(entry.reading, 'reading') : pick(entry.meaning, 'meaning');
+  const rawPrompt = promptType === 'reading' ? preferredReading(entry) : preferredMeaning(entry);
   const prompt = promptType === 'reading' ? readingChoiceText(entry, rawPrompt) : rawPrompt;
   const correctChoice = prompt;
   const nextRound = room.turn ? room.turn.round + 1 : 1;

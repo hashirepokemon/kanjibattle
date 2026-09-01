@@ -22,6 +22,45 @@ main > section { @apply relative z-20; }
 .meta { @apply text-xs font-black uppercase tracking-wide text-slate-400; }
 .status-text { @apply mt-1 text-xl font-black; }
 .read-more-link { @apply inline font-black text-sakura underline decoration-sakura/40 underline-offset-4 transition hover:text-rose-500; }
+.level-select-wrap { @apply flex items-center gap-3 rounded-2xl border-2 border-sora/50 bg-sora/10 px-4; }
+.level-select { @apply border-0 bg-transparent px-0 shadow-none focus:border-transparent; }
+
+.game-shell { background: linear-gradient(180deg, #dff4ff 0%, #f4fbff 62%, #ffffff 100%); }
+.game-header { @apply relative z-20 flex flex-wrap items-center gap-3 rounded-3xl bg-white/90 px-5 py-3 shadow-soft; }
+.game-header-level { @apply ml-auto flex items-center gap-2 rounded-2xl border-2 border-sakura/30 bg-rose-50 px-4 py-2 text-sm font-black text-sakura; }
+.game-header-status { @apply w-full truncate text-sm font-bold text-slate-500 md:w-auto md:max-w-[32%]; }
+.prompt-card { @apply sticky top-3 z-30 mb-3 grid overflow-hidden rounded-[1.75rem] border-4 border-sakura bg-white shadow-soft md:grid-cols-[minmax(0,1fr)_150px]; }
+.prompt-card-main { @apply min-w-0 px-5 py-4 text-center md:px-8; }
+.prompt-label { @apply flex items-center justify-center gap-2 text-xl font-black text-sakura; }
+.prompt-value { @apply mt-1 overflow-hidden text-ellipsis font-black leading-tight text-sumi; font-size: clamp(2.4rem, 6vw, 5.4rem); overflow-wrap: anywhere; }
+.prompt-instruction { @apply mx-auto mt-2 max-w-xl rounded-full bg-rose-50 px-4 py-1 text-sm font-black text-sakura md:text-base; }
+.prompt-hint { @apply mt-2 text-base font-black text-slate-600; }
+.prompt-hint span { @apply rounded-lg bg-yuzu/50 px-3 py-1 text-2xl text-sumi; }
+.prompt-hint-soon { @apply mt-2 text-sm font-bold text-slate-500; }
+.prompt-timer { @apply flex items-center justify-center gap-2 border-t-2 border-rose-100 bg-rose-50 px-4 py-3 text-sakura md:flex-col md:border-l-2 md:border-t-0; }
+.prompt-timer > span { @apply text-3xl; }
+.prompt-timer strong { @apply text-5xl font-black leading-none; }
+.prompt-timer small { @apply text-lg font-black; }
+.guesser-banner { @apply mb-3 flex items-center justify-between gap-4 rounded-[1.75rem] border-4 border-sora/60 bg-white px-5 py-4 shadow-soft; }
+.guesser-timer { @apply flex items-baseline gap-1 rounded-2xl bg-sora/15 px-4 py-2 text-sakura; }
+.guesser-timer strong { @apply text-4xl font-black; }
+.guesser-timer span { @apply text-sm font-black; }
+.drawing-board { @apply rounded-[2rem] bg-white p-3 shadow-soft ring-4 ring-white/70; }
+.drawing-toolbar { @apply mb-3 flex flex-wrap items-center gap-2; }
+.drawing-canvas { height: clamp(320px, 47vh, 500px); @apply rounded-[1.5rem] border-4 border-dashed border-sora/60; background-image: linear-gradient(to right, transparent calc(50% - 1px), rgb(148 163 184 / 0.18) 50%, transparent calc(50% + 1px)), linear-gradient(to bottom, transparent calc(50% - 1px), rgb(148 163 184 / 0.18) 50%, transparent calc(50% + 1px)); }
+.score-panel { @apply rounded-[1.75rem] bg-white/95 p-5 shadow-soft; }
+.player-row { @apply flex items-center gap-3 rounded-2xl border-2 border-slate-100 bg-slate-50 p-3 transition; }
+.player-row img { @apply h-12 w-12 shrink-0 rounded-full bg-white object-cover ring-2 ring-sora/40; }
+.player-drawing { @apply border-sakura bg-rose-50; }
+
+@media (max-width: 767px) {
+  .game-header-status { @apply order-last w-full; }
+  .prompt-card { position: sticky; top: 0.5rem; }
+  .prompt-card-main { @apply px-4 py-3; }
+  .prompt-value { font-size: clamp(2rem, 11vw, 3.4rem); }
+  .prompt-timer strong { @apply text-4xl; }
+  .drawing-canvas { height: 42vh; min-height: 300px; }
+}
 
 .mascot-layer {
   @apply pointer-events-none fixed inset-0 z-0 overflow-hidden;

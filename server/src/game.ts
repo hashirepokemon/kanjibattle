@@ -58,6 +58,19 @@ function pick<T>(items: T[]): T {
   return items[Math.floor(Math.random() * items.length)];
 }
 
+const preferredMeanings = new Map<string, string>([
+  ['力', 'power'],
+]);
+
+function preferredReading(entry: KanjiEntry) {
+  const reading = entry.reading?.[0] ?? entry.kunyomi?.[0] ?? entry.onyomi?.[0] ?? entry.kanji;
+  return entry.readingHints?.[reading] ?? reading;
+}
+
+function preferredMeaning(entry: KanjiEntry) {
+  return preferredMeanings.get(entry.kanji) ?? entry.meaning?.[0] ?? 'meaning unavailable';
+}
+
 function choiceCount(player: Player, room: RoomState): number {
   if (!room.settings.rescueEnabled) return 4;
   if (player.roundsWithoutCorrect >= 3) return 2;
@@ -116,7 +129,7 @@ function startTurn(io: Server, room: RoomState, drawerId?: string): void {
   const entry = pick(room.entries);
   const allowed = entry.promptTypes.length ? entry.promptTypes : ['reading', 'meaning'];
   const promptType = room.settings.promptMode === 'random' ? pick(allowed) : room.settings.promptMode;
-  const prompt = promptType === 'reading' ? pick(entry.reading) : pick(entry.meaning);
+  const prompt = promptType === 'reading' ? `${preferredReading(entry)} (${preferredMeaning(entry)})` : preferredMeaning(entry);
   const nextRound = room.turn ? room.turn.round + 1 : 1;
 
   room.phase = 'playing';

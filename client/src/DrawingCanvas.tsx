@@ -92,10 +92,10 @@ export default function DrawingCanvas({ canDraw, phase }: Props) {
   const clear = () => socket.emit('canvas:clear');
 
   return (
-    <div className="rounded-[2rem] bg-white p-3 shadow-soft ring-4 ring-white/70">
-      <div className="mb-3 flex flex-wrap items-center gap-2">
-        <button className={'tool-button ' + (mode === 'pen' ? 'tool-active' : '')} onClick={() => setMode('pen')} disabled={!canDraw}>Pen</button>
-        <button className={'tool-button ' + (mode === 'eraser' ? 'tool-active' : '')} onClick={() => setMode('eraser')} disabled={!canDraw}>Eraser</button>
+    <div className="drawing-board">
+      <div className="drawing-toolbar">
+        <button className={'tool-button ' + (mode === 'pen' ? 'tool-active' : '')} onClick={() => setMode('pen')} disabled={!canDraw}><span aria-hidden="true">✏️</span> Pen</button>
+        <button className={'tool-button ' + (mode === 'eraser' ? 'tool-active' : '')} onClick={() => setMode('eraser')} disabled={!canDraw}><span aria-hidden="true">◩</span> Eraser</button>
         <label className="flex items-center gap-2 text-sm font-bold text-slate-600">Size
           <input type="range" min="4" max="28" value={width} onChange={(e) => setWidth(Number(e.target.value))} disabled={!canDraw} />
         </label>
@@ -103,7 +103,7 @@ export default function DrawingCanvas({ canDraw, phase }: Props) {
       </div>
       <canvas
         ref={canvasRef}
-        className="h-[48vh] min-h-[320px] w-full touch-none rounded-[1.5rem] border-4 border-dashed border-sora/70 bg-white"
+        className="drawing-canvas w-full touch-none bg-white"
         onPointerDown={start}
         onPointerMove={move}
         onPointerUp={end}

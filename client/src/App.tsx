@@ -308,34 +308,37 @@ export default function App() {
     if (showRules) return <RulesPage onBack={closeRules} />;
 
     return (
-      <main className="min-h-screen bg-gradient-to-br from-yuzu/50 via-white to-sora/40 p-4 text-sumi">
-        <MascotPopups />
-        <section className="mx-auto flex min-h-screen max-w-5xl items-center justify-center">
-          <div className="grid w-full gap-6 rounded-[2rem] bg-white/90 p-6 shadow-soft md:grid-cols-[1.1fr_0.9fr] md:p-10">
-            <div className="flex flex-col justify-center">
-              <p className="text-lg font-black text-sakura">Real-time kanji learning battle</p>
-              <h1 className="mt-3 text-5xl font-black leading-tight md:text-7xl">Kanji Draw Battle</h1>
-              <p className="mt-5 text-lg font-bold leading-8 text-slate-600">One player sees a Japanese reading, writes the matching kanji, and everyone else chooses the correct reading. <button className="read-more-link" onClick={openRules}>Read more...</button></p>
+      <main className="home-shell text-sumi">
+        <section className="home-stage">
+          <div className="home-brand-panel">
+            <div className="home-logo" aria-label="Kanji Draw Battle"><span>Kanji</span><strong>Draw</strong><b>Battle</b><i aria-hidden="true">🖌️</i></div>
+            <p className="home-tagline">Draw it. Read it. Win it!</p>
+            <p className="home-description">One player draws the kanji or word. Everyone else races to choose the correct reading.</p>
+            <button className="home-rules-link" onClick={openRules}>How to play <span aria-hidden="true">→</span></button>
+            <div className="home-mascots" aria-hidden="true">
+              <img src="/mascots/mascot-chibi-black.png" alt="" />
+              <img src="/mascots/mascot-chibi-blue.png" alt="" />
             </div>
-            <div className="rounded-[1.5rem] bg-sora/20 p-5">
+          </div>
+          <div className="home-action-panel">
+            <div className="home-action-heading"><span aria-hidden="true">✦</span><div><h1>Ready to battle?</h1><p>Create a room or join your class.</p></div></div>
               {!joinNameStep && !inviteRoomCode ? <>
                 <label className="label">Name for hosting</label>
                 <input className="input" value={name} onChange={(e) => setName(e.target.value)} placeholder="Example: Aoi" />
-                <button className="primary-button mt-4 w-full" onClick={() => socket.emit('room:create', { name })}>Create Room</button>
-                <div className="my-5 h-px bg-slate-200" />
+                <button className="home-create-button" onClick={() => socket.emit('room:create', { name })}><span aria-hidden="true">＋</span>Create Room</button>
+                <div className="home-divider"><span>or join</span></div>
                 <label className="label">Room Code</label>
                 <input className="input uppercase" value={roomCodeInput} onChange={(e) => { setRoomCodeInput(e.target.value.toUpperCase()); setJoinNameStep(false); }} placeholder="ABCDE" />
-                <button className="secondary-button mt-4 w-full" onClick={prepareJoin}>Join Room</button>
+                <button className="home-join-button" onClick={prepareJoin}><span aria-hidden="true">→</span>Join Room</button>
               </> : <>
-                <p className="text-center text-lg font-black text-sakura">Join Room</p>
-                <p className="rounded-2xl bg-white p-3 text-center text-xl font-black tracking-[0.12em] text-sumi">{roomCodeInput}</p>
+                <p className="home-join-title">Join Room</p>
+                <p className="home-room-code">{roomCodeInput}</p>
                 <label className="label mt-5">Your Name</label>
                 <input className="input" value={name} onChange={(e) => setName(e.target.value)} placeholder="Example: Aoi" autoFocus />
-                <button className="primary-button mt-4 w-full" onClick={submitJoin}>Enter Room</button>
+                <button className="home-create-button" onClick={submitJoin}>Enter Room</button>
                 {!inviteRoomCode && <button className="tool-button mt-3 w-full" onClick={() => setJoinNameStep(false)}>Change Room Code</button>}
               </>}
               {error && <p className="mt-4 rounded-xl bg-red-100 p-3 font-bold text-red-700">{error}</p>}
-            </div>
           </div>
         </section>
       </main>
@@ -366,20 +369,20 @@ export default function App() {
     return (
       <main className="min-h-screen bg-gradient-to-br from-sora/30 via-white to-yuzu/40 p-4 text-sumi">
         <MascotPopups />
-        <section className="mx-auto grid max-w-6xl gap-5 py-6 lg:grid-cols-[0.8fr_1.2fr]">
+        <section className="lobby-shell mx-auto grid max-w-6xl gap-5 py-6 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="panel">
             <h1 className="text-4xl font-black">Lobby</h1>
             <p className="mt-3 text-lg font-bold text-slate-600">Room Code</p>
             <div className="mt-2 rounded-3xl bg-sumi p-5 text-center text-5xl font-black tracking-[0.2em] text-white">{view.roomCode}</div>
-            <div className="mt-4 grid gap-4 rounded-3xl bg-sora/15 p-4 md:grid-cols-[180px_1fr]">
+            <div className="lobby-invite mt-4 grid gap-4 rounded-3xl bg-sora/15 p-4 md:grid-cols-[150px_1fr]">
               <img className="mx-auto rounded-2xl bg-white p-2 shadow-soft" src={qrCodeUrl} alt={`QR code for room ${view.roomCode}`} width="180" height="180" />
               <div className="flex min-w-0 flex-col justify-center gap-3">
                 <p className="text-lg font-black">Invite Link</p>
                 <p className="break-all rounded-2xl bg-white p-3 text-sm font-bold text-slate-600">{inviteLink}</p>
-                <div className="grid gap-2 sm:grid-cols-3">
+                <div className="lobby-action-grid grid gap-2 sm:grid-cols-2">
                   <button className="secondary-button text-base" onClick={copyInviteLink}>Copy Link</button>
                   <button className="primary-button text-base" onClick={shareInviteLink}>Share</button>
-                  <a className="secondary-button text-center text-base" href={twitterShareUrl} target="_blank" rel="noreferrer">X / Twitter</a>
+                  <a className="secondary-button text-center text-base sm:col-span-2" href={twitterShareUrl} target="_blank" rel="noreferrer">Share on X</a>
                 </div>
                 {copyStatus && <p className="rounded-xl bg-matcha/10 p-2 text-sm font-black text-matcha">{copyStatus}</p>}
               </div>
@@ -399,7 +402,15 @@ export default function App() {
                 <option value="custom">Teacher Custom Kanji Mode</option>
                 <option value="review">Today Review Mode</option>
               </select>
-              {view.settings.mode === 'grade' && <><label className="label">Learning Level</label><div className="level-select-wrap"><span aria-hidden="true">🎓</span><select className="input level-select" value={view.settings.grade} onChange={(e) => updateSettings({ grade: e.target.value as GradeKey })}>{grades.map((g) => <option key={g.value} value={g.value}>{g.label}</option>)}</select></div><p className="-mt-2 text-sm font-bold text-slate-500">Grade levels follow the current MEXT grade allocation. JLPT and AP use their dedicated lists.</p></>}
+              {view.settings.mode === 'grade' && <>
+                <label className="label">Question Style</label>
+                <div className="question-format-grid" role="group" aria-label="Question style">
+                  <button type="button" className={view.settings.questionFormat === 'kanji' ? 'format-option format-active' : 'format-option'} onClick={() => updateSettings({ questionFormat: 'kanji' })}><span>一</span><b>Single kanji</b><small>Write one character</small></button>
+                  <button type="button" className={view.settings.questionFormat === 'vocabulary' ? 'format-option format-active' : 'format-option'} onClick={() => updateSettings({ questionFormat: 'vocabulary' })}><span>先生</span><b>Vocabulary</b><small>Write a whole word</small></button>
+                  <button type="button" className={view.settings.questionFormat === 'mixed' ? 'format-option format-active' : 'format-option'} onClick={() => updateSettings({ questionFormat: 'mixed' })}><span>Mix</span><b>Mixed</b><small>Both styles</small></button>
+                </div>
+                <label className="label">Learning Level</label><div className="level-select-wrap"><span aria-hidden="true">🎓</span><select className="input level-select" value={view.settings.grade} onChange={(e) => updateSettings({ grade: e.target.value as GradeKey })}>{grades.map((g) => <option key={g.value} value={g.value}>{g.label}</option>)}</select></div><p className="-mt-2 text-sm font-bold text-slate-500">Grade levels follow the current MEXT grade allocation. JLPT and AP use their dedicated lists.</p>
+              </>}
               {view.settings.mode !== 'grade' && <><label className="label">Kanji for this game</label><textarea className="input min-h-28" value={view.settings.customKanjiInput} onChange={(e) => updateSettings({ customKanjiInput: e.target.value })} placeholder={'\u68ee, \u6797, \u5ddd, \u5c71, \u706b, \u6c34'} /></>}
               <div className="grid gap-4 md:grid-cols-2">
                 <div><label className="label">Next Drawer</label><select className="input" value={view.settings.nextDrawerRule} onChange={(e) => updateSettings({ nextDrawerRule: e.target.value as GameSettings['nextDrawerRule'] })}><option value="winner">Winner draws next</option><option value="order">Take turns in order</option></select></div>
@@ -408,7 +419,7 @@ export default function App() {
               </div>
               <label className="flex items-center gap-3 rounded-2xl bg-matcha/10 p-4 text-lg font-black"><input type="checkbox" checked={view.settings.rescueEnabled} onChange={(e) => updateSettings({ rescueEnabled: e.target.checked })} />Rescue rule ON</label>
             </fieldset>
-            <p className="mt-4 font-bold text-slate-600">Available kanji: {view.kanjiCount}</p>
+            <p className="mt-4 font-bold text-slate-600">Available questions: {view.kanjiCount}</p>
             {view.you?.isHost && <button className="primary-button mt-5 w-full" disabled={!view.canStart} onClick={() => socket.emit('game:start')}>{view.canStart ? 'Start Game' : 'Need 2+ players and kanji'}</button>}
           </div> : <div className="panel flex min-h-[360px] flex-col justify-center text-center">
             <h2 className="text-3xl font-black">Waiting for the host</h2>
@@ -428,6 +439,7 @@ export default function App() {
     : view.settings.mode === 'review'
       ? 'Today Review'
       : 'Teacher Custom';
+  const drawingTargetLabel = view.settings.questionFormat === 'vocabulary' ? 'Write the word for' : view.settings.questionFormat === 'mixed' ? 'Write the answer for' : 'Write the kanji for';
 
   return (
     <main className="game-shell min-h-screen p-3 text-sumi">
@@ -439,35 +451,36 @@ export default function App() {
       )}
       <section className="game-frame mx-auto max-w-[1440px]">
         <header className="game-header">
-          <p className="game-brand"><span>Kanji</span> Draw Battle <b aria-hidden="true">🐾</b></p>
+          <p className="game-brand"><span>Kanji</span> Draw <strong>Battle</strong></p>
           <div className="room-chip">Room {view.roomCode}</div>
           <p className="round-copy">Round {view.currentTurn?.round} / {view.settings.roundLimit}</p>
-          <div className="mobile-player-strip" aria-label="Players">{view.players.map((p, index) => <img key={p.id} src={mascotImages[index % mascotImages.length]} alt={p.name} className={p.id === view.currentTurn?.drawerId ? 'mini-drawing' : ''} />)}</div>
+          <div className="mobile-player-strip" aria-label="Players">{view.players.slice(0, 4).map((p, index) => <span key={p.id} className={p.id === view.currentTurn?.drawerId ? 'mini-player mini-drawing' : 'mini-player'}><img src={mascotImages[index % mascotImages.length]} alt={p.name} /><b>{p.score}</b></span>)}</div>
           <div className="game-header-level"><span aria-hidden="true">🎓</span><span>{selectedLevel}</span></div>
-          <p className="game-header-status">{view.currentTurn?.statusMessage}</p>
+          <div className="header-timer" aria-label={`${view.currentTurn?.secondsLeft} seconds left`}><span aria-hidden="true">◷</span><strong>{view.currentTurn?.secondsLeft}</strong><small>sec</small></div>
         </header>
         <div className="game-stage">
         <div className="game-main min-w-0">
           {view.isDrawer ? <section className="prompt-card" aria-label="Your drawing prompt">
             <div className="prompt-card-main">
-              <p className="prompt-label"><span aria-hidden="true">✏️</span> Write the kanji for</p>
+              <p className="prompt-label"><span aria-hidden="true">✏️</span> {drawingTargetLabel}</p>
               <p className="prompt-value">{view.currentTurn?.prompt}</p>
               <p className="prompt-instruction">送り仮名は（ ）で表示</p>
               {view.currentTurn?.answer
                 ? <p className="prompt-hint">Hint: write <span>{view.currentTurn.answer}</span></p>
                 : <p className="prompt-hint-soon">Hint in {hintCountdown > 0 ? `${hintCountdown}s` : 'a moment'}</p>}
             </div>
-            <div className="prompt-timer" aria-label={`${view.currentTurn?.secondsLeft} seconds left`}><span aria-hidden="true">⏱</span><strong>{view.currentTurn?.secondsLeft}</strong><small>sec</small></div>
           </section> : <section className="guesser-banner">
             <div className="guesser-drawer"><img src={mascotImages[Math.max(0, view.players.findIndex((p) => p.id === view.currentTurn?.drawerId)) % mascotImages.length]} alt="" /><div><p className="text-lg font-black">{view.currentTurn?.drawerName} is drawing...</p><p className="text-sm font-bold text-blue-100">Watch closely, then choose the reading.</p></div></div>
-            <div className="guesser-timer"><strong>{view.currentTurn?.secondsLeft}</strong><span>sec</span></div>
+            <p className="guesser-status">{view.currentTurn?.statusMessage}</p>
           </section>}
-          <DrawingCanvas canDraw={view.isDrawer} phase={view.phase} />
-          {!view.isDrawer && view.currentTurn?.choices && <section className="answer-zone" aria-label="Multiple choice answers"><div className="answer-zone-heading"><span aria-hidden="true">↓</span><div><p>Choose the reading</p><span>絵の上から指を動かしてもスクロールできます</span></div></div><div className="answer-grid">{view.currentTurn.choices.map((choice, index) => <button key={choice} className="choice-button" disabled={answerLocked || view.phase !== 'playing'} onClick={() => socket.emit('answer:submit', { choice })}><span className="choice-prefix">{String.fromCharCode(65 + index)}.</span><span className="choice-text">{choice}</span></button>)}</div></section>}
-          {!view.isDrawer && answerLocked && view.phase === 'playing' && <div className="mt-4 rounded-3xl bg-red-50 p-5 text-center text-xl font-black text-red-600 shadow-soft">You missed this one. Wait until another player answers correctly.</div>}
-          {view.currentTurn?.answer && !view.isDrawer && view.phase === 'turn-reveal' && <div className="mt-4 rounded-3xl bg-white p-5 text-center text-3xl font-black shadow-soft">Answer: {view.currentTurn.answer}<span className="block text-xl text-slate-600">Reading: {view.currentTurn.correctChoice}</span></div>}
+          <div className={view.isDrawer ? 'play-area play-area-drawer' : 'play-area play-area-guesser'}>
+            <DrawingCanvas canDraw={view.isDrawer} phase={view.phase} />
+            {!view.isDrawer && view.currentTurn?.choices && <section className="answer-zone" aria-label="Multiple choice answers"><div className="answer-zone-heading"><span aria-hidden="true">✦</span><div><p>Choose the reading</p><span>見えた漢字の読み方を選ぼう</span></div></div><div className="answer-grid">{view.currentTurn.choices.map((choice, index) => <button key={choice} className={`choice-button choice-${index + 1}`} disabled={answerLocked || view.phase !== 'playing'} onClick={() => socket.emit('answer:submit', { choice })}><span className="choice-prefix">{index + 1}</span><span className="choice-text">{choice}</span></button>)}</div></section>}
+          </div>
+          {!view.isDrawer && answerLocked && view.phase === 'playing' && <div className="turn-result-toast turn-result-wrong">もう一度考えてみよう<span>次の問題を待ってね</span></div>}
+          {view.currentTurn?.answer && !view.isDrawer && view.phase === 'turn-reveal' && <div className="turn-result-toast turn-result-correct">Answer: {view.currentTurn.answer}<span>Reading: {view.currentTurn.correctChoice}</span></div>}
         </div>
-        <aside className="score-panel h-fit" aria-label="Players and scores">
+        <aside className="score-panel" aria-label="Players and scores">
           <div className="score-title"><h2>Players</h2><span>{view.players.length} playing</span></div>
           <div className="player-list">{view.players.map((p, index) => <div key={p.id} className={`player-row ${p.id === view.currentTurn?.drawerId ? 'player-drawing' : ''}`}><span className="drawing-badge">Drawing</span><img src={mascotImages[index % mascotImages.length]} alt="" /><div className="player-info"><strong>{p.name}{p.id === view.you?.id ? ' (You)' : ''}</strong><b>{p.score} pts</b><small>{p.id === view.currentTurn?.drawerId ? 'Drawing now' : `${p.correctCount} correct · ${p.wrongCount} missed`}</small></div></div>)}</div>
         </aside>

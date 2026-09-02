@@ -151,7 +151,7 @@ export default function DrawingCanvas({ canDraw, phase }: Props) {
           onPointerUp={end}
           onPointerCancel={end}
         />
-        {!hasInk && <div className="canvas-empty"><span aria-hidden="true">🐾</span>{canDraw ? 'Draw the kanji here' : 'Opponent is drawing...'}</div>}
+        {!hasInk && <div className="canvas-empty"><span aria-hidden="true">🐾</span>{canDraw ? 'Draw the answer here' : 'Opponent is drawing...'}</div>}
       </div>
       {canDraw && <div className="drawing-toolbar">
         <button className={'tool-button ' + (mode === 'pen' ? 'tool-active' : '')} onClick={() => setMode('pen')}><span aria-hidden="true">✏️</span> Pen</button>

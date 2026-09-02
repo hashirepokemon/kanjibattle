@@ -1,4 +1,4 @@
-import { allKnownEntries, getEntriesForSettings } from './kanji.js';
+import { allKnownEntries, educationalReading, getEntriesForSettings } from './kanji.js';
 
 const rooms = new Map();
 const playerRooms = new Map();
@@ -9,6 +9,7 @@ const defaultSettings = {
   grade: 'grade1',
   customKanjiInput: '\u68ee, \u6797, \u5ddd, \u5c71, \u706b, \u6c34',
   promptMode: 'reading',
+  questionFormat: 'kanji',
   roundLimit: 6,
   turnSeconds: 60,
   rescueEnabled: true,
@@ -40,10 +41,6 @@ function pick(items, label) {
   return items[randomIndex(items, label)];
 }
 
-function preferredReading(entry) {
-  return entry.kunyomi?.[0] ?? entry.reading?.[0] ?? entry.onyomi?.[0] ?? entry.kanji;
-}
-
 function choiceCount(player, room) {
   if (!room.settings.rescueEnabled) return 4;
   if (player.roundsWithoutCorrect >= 3) return 2;
@@ -52,7 +49,7 @@ function choiceCount(player, room) {
 }
 
 function readingChoiceText(entry, reading) {
-  const baseReading = reading ?? preferredReading(entry);
+  const baseReading = reading ?? educationalReading(entry);
   const displayReading = entry.readingHints?.[baseReading] ?? baseReading;
   const withoutAffixMarkers = displayReading.replace(/^-|-$/g, '');
   const dotIndex = withoutAffixMarkers.indexOf('.');
@@ -61,12 +58,14 @@ function readingChoiceText(entry, reading) {
 }
 
 function choiceText(entry) {
-  return readingChoiceText(entry, preferredReading(entry));
+  return readingChoiceText(entry, educationalReading(entry));
 }
 
 function choicesFor(player, entry, room, correctChoice) {
   const needed = choiceCount(player, room);
-  const knownEntries = [...room.entries, ...allKnownEntries()];
+  const knownEntries = room.settings.questionFormat === 'vocabulary'
+    ? [...room.entries]
+    : [...room.entries, ...allKnownEntries()];
   for (const kanji of entry.distractors ?? []) {
     const match = room.entries.find((candidate) => candidate.kanji === kanji);
     if (match) knownEntries.push(match);
@@ -128,7 +127,7 @@ function startTurn(io, room, drawerId) {
   const drawer = room.players[room.drawerIndex % room.players.length];
   const entry = pick(room.entries, 'kanji');
   const promptType = 'reading';
-  const prompt = readingChoiceText(entry, preferredReading(entry));
+  const prompt = readingChoiceText(entry, educationalReading(entry));
   const correctChoice = prompt;
   const nextRound = room.turn ? room.turn.round + 1 : 1;
 

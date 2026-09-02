@@ -1,0 +1,38 @@
+{
+  "grade1": [
+    { "kanji": "先生", "reading": ["せんせい"], "meaning": ["teacher"], "grade": 1, "onyomi": [], "kunyomi": ["せんせい"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "学生", "reading": ["がくせい"], "meaning": ["student"], "grade": 1, "onyomi": [], "kunyomi": ["がくせい"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "学校", "reading": ["がっこう"], "meaning": ["school"], "grade": 1, "onyomi": [], "kunyomi": ["がっこう"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "友達", "reading": ["ともだち"], "meaning": ["friend"], "grade": 1, "onyomi": [], "kunyomi": ["ともだち"], "promptTypes": ["reading"], "distractors": [] }
+  ],
+  "grade2": [
+    { "kanji": "教室", "reading": ["きょうしつ"], "meaning": ["classroom"], "grade": 2, "onyomi": [], "kunyomi": ["きょうしつ"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "図書館", "reading": ["としょかん"], "meaning": ["library"], "grade": 2, "onyomi": [], "kunyomi": ["としょかん"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "毎日", "reading": ["まいにち"], "meaning": ["every day"], "grade": 2, "onyomi": [], "kunyomi": ["まいにち"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "電車", "reading": ["でんしゃ"], "meaning": ["train"], "grade": 2, "onyomi": [], "kunyomi": ["でんしゃ"], "promptTypes": ["reading"], "distractors": [] }
+  ],
+  "grade3": [
+    { "kanji": "宿題", "reading": ["しゅくだい"], "meaning": ["homework"], "grade": 3, "onyomi": [], "kunyomi": ["しゅくだい"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "漢字", "reading": ["かんじ"], "meaning": ["kanji"], "grade": 3, "onyomi": [], "kunyomi": ["かんじ"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "勉強", "reading": ["べんきょう"], "meaning": ["study"], "grade": 3, "onyomi": [], "kunyomi": ["べんきょう"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "運動", "reading": ["うんどう"], "meaning": ["exercise"], "grade": 3, "onyomi": [], "kunyomi": ["うんどう"], "promptTypes": ["reading"], "distractors": [] }
+  ],
+  "grade4": [
+    { "kanji": "卒業", "reading": ["そつぎょう"], "meaning": ["graduation"], "grade": 4, "onyomi": [], "kunyomi": ["そつぎょう"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "発表", "reading": ["はっぴょう"], "meaning": ["presentation"], "grade": 4, "onyomi": [], "kunyomi": ["はっぴょう"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "実験", "reading": ["じっけん"], "meaning": ["experiment"], "grade": 4, "onyomi": [], "kunyomi": ["じっけん"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "歴史", "reading": ["れきし"], "meaning": ["history"], "grade": 4, "onyomi": [], "kunyomi": ["れきし"], "promptTypes": ["reading"], "distractors": [] }
+  ],
+  "grade5": [
+    { "kanji": "準備", "reading": ["じゅんび"], "meaning": ["preparation"], "grade": 5, "onyomi": [], "kunyomi": ["じゅんび"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "経験", "reading": ["けいけん"], "meaning": ["experience"], "grade": 5, "onyomi": [], "kunyomi": ["けいけん"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "技術", "reading": ["ぎじゅつ"], "meaning": ["technology"], "grade": 5, "onyomi": [], "kunyomi": ["ぎじゅつ"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "自然", "reading": ["しぜん"], "meaning": ["nature"], "grade": 5, "onyomi": [], "kunyomi": ["しぜん"], "promptTypes": ["reading"], "distractors": [] }
+  ],
+  "grade6": [
+    { "kanji": "環境", "reading": ["かんきょう"], "meaning": ["environment"], "grade": 6, "onyomi": [], "kunyomi": ["かんきょう"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "責任", "reading": ["せきにん"], "meaning": ["responsibility"], "grade": 6, "onyomi": [], "kunyomi": ["せきにん"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "地域", "reading": ["ちいき"], "meaning": ["region"], "grade": 6, "onyomi": [], "kunyomi": ["ちいき"], "promptTypes": ["reading"], "distractors": [] },
+    { "kanji": "情報", "reading": ["じょうほう"], "meaning": ["information"], "grade": 6, "onyomi": [], "kunyomi": ["じょうほう"], "promptTypes": ["reading"], "distractors": [] }
+  ]
+}

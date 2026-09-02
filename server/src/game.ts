@@ -1,6 +1,6 @@
 import type { Server, Socket } from 'socket.io';
 import type { GameSettings, KanjiEntry, Player, RoomView, StrokePayload } from '../../shared/types.js';
-import { getEntriesForSettings } from './kanji.js';
+import { educationalReading, getEntriesForSettings } from './kanji.js';
 
 interface TurnState {
   round: number;
@@ -38,6 +38,7 @@ const defaultSettings: GameSettings = {
   grade: 'grade1',
   customKanjiInput: '森, 林, 川, 山, 火, 水',
   promptMode: 'reading',
+  questionFormat: 'kanji',
   roundLimit: 6,
   turnSeconds: 60,
   rescueEnabled: true,
@@ -59,11 +60,7 @@ function pick<T>(items: T[]): T {
   return items[Math.floor(Math.random() * items.length)];
 }
 
-function preferredReading(entry: KanjiEntry) {
-  return entry.kunyomi?.[0] ?? entry.reading?.[0] ?? entry.onyomi?.[0] ?? entry.kanji;
-}
-
-function readingChoiceText(entry: KanjiEntry, reading = preferredReading(entry)): string {
+function readingChoiceText(entry: KanjiEntry, reading = educationalReading(entry)): string {
   const displayReading = entry.readingHints?.[reading] ?? reading;
   const withoutAffixMarkers = displayReading.replace(/^-|-$/g, '');
   const dotIndex = withoutAffixMarkers.indexOf('.');

@@ -1,6 +1,7 @@
 export type Screen = 'home' | 'lobby' | 'game' | 'results';
 export type GamePhase = 'lobby' | 'playing' | 'turn-reveal' | 'results';
 export type PromptMode = 'reading' | 'meaning' | 'random';
+export type QuestionFormat = 'kanji' | 'vocabulary' | 'mixed';
 export type GameMode = 'grade' | 'custom' | 'review';
 export type GradeKey = 'grade1' | 'grade2' | 'grade3' | 'grade4' | 'grade5' | 'grade6' | 'juniorHigh' | 'advanced' | 'jlptN5' | 'jlptN4' | 'jlptN3' | 'jlptN2' | 'jlptN1';
 export type NextDrawerRule = 'winner' | 'order';
@@ -36,6 +37,7 @@ export interface GameSettings {
   grade: GradeKey;
   customKanjiInput: string;
   promptMode: PromptMode;
+  questionFormat: QuestionFormat;
   roundLimit: number;
   turnSeconds: number;
   rescueEnabled: boolean;
